@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -11,14 +12,13 @@ export default function Footer() {
             <div className="flex items-start gap-4">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-8 flex border-l-2 border-shrim-gold pl-1">
-                    <div className="w-1.5 h-full bg-shrim-green"></div>
-                    <div className="w-1.5 h-3/4 bg-gray-400 mt-auto ml-1"></div>
-                  </div>
-                  <div className="flex flex-col leading-none">
-                    <span className="text-lg font-bold text-white uppercase tracking-wide">Shrim</span>
-                    <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Export</span>
-                  </div>
+                  <Image
+                    src="/images/Asset 14@10x-8.png"
+                    alt="Shrim Export Logo"
+                    width={100}
+                    height={50}
+                    className="h-10 w-auto"
+                  />
                 </div>
                 <div>
                   <p className="text-sm text-gray-300">Milind Madhukar Jori -</p>
@@ -31,14 +31,13 @@ export default function Footer() {
             <div className="flex items-start gap-4">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-8 flex border-l-2 border-shrim-gold pl-1">
-                    <div className="w-1.5 h-full bg-shrim-green"></div>
-                    <div className="w-1.5 h-3/4 bg-gray-400 mt-auto ml-1"></div>
-                  </div>
-                  <div className="flex flex-col leading-none">
-                    <span className="text-lg font-bold text-white uppercase tracking-wide">Shrim</span>
-                    <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Linguistics</span>
-                  </div>
+                  <Image
+                    src="/images/Asset 15@10x-8.png"
+                    alt="Shrim Linguistics Logo"
+                    width={100}
+                    height={50}
+                    className="h-10 w-auto"
+                  />
                 </div>
                 <div>
                   <p className="text-sm text-gray-300">Rameshwari Milind Jori -</p>
@@ -51,8 +50,8 @@ export default function Footer() {
 
           {/* Quick Links Column */}
           <div>
-            <h3 className="text-sm font-bold tracking-wider mb-6 text-white uppercase">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-sm font-bold tracking-wider mb-3 text-white uppercase">Quick Links</h3>
+            <ul className="">
               <li><Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">Home</Link></li>
               <li><Link href="/#exports" className="text-sm text-gray-400 hover:text-white transition-colors">Shrim Exports</Link></li>
               <li><Link href="/product-catalogue" className="text-sm text-gray-400 hover:text-white transition-colors">Product Catalogue</Link></li>
@@ -77,7 +76,7 @@ export default function Footer() {
                 <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:rameshwari@shrimexport.com" className="hover:text-white transition-colors">rameshwari@shrimexport.com</a>
+                <a href="mailto:rameshwari@shrimexport.com" className="hover:text-white transition-colors">rameshwarijori@shrimexport.com</a>
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-400">
                 <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,7 +90,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-8 text-center text-xs text-gray-500">
-          <p>Destiny Global All Rights Reserved</p>
+          <p>Shrim Export All Rights Reserved</p>
         </div>
       </div>
     </footer>

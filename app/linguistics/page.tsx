@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Linguistics() {
   return (
@@ -26,7 +27,7 @@ export default function Linguistics() {
           <h1 className="text-4xl md:text-5xl font-black text-white max-w-3xl leading-tight">
             HINDI & MARATHI LANGUAGE TUTORING FOR NRIs & RESIDENTS
           </h1>
-          <p className="mt-4 text-sm text-shrim-gold font-bold tracking-widest uppercase">
+          <p className="mt-4 text-sm text-white font-semibold tracking-widest uppercase">
             YOUR ROOTS, YOUR LANGUAGE. DON'T LET IT FADE.
           </p>
           
@@ -40,13 +41,13 @@ export default function Linguistics() {
           </div>
 
           <div className="mt-12 flex items-center gap-4">
-            <div className="w-8 h-12 flex border-l-2 border-shrim-gold pl-1">
-              <div className="w-2 h-full bg-white"></div>
-              <div className="w-2 h-3/4 bg-gray-300 mt-auto ml-1"></div>
-            </div>
-            <div>
-              <p className="text-white font-bold tracking-wide">SHRIM <span className="text-gray-300 text-xs tracking-widest font-normal uppercase block">Linguistics</span></p>
-            </div>
+            <Image
+              src="/images/Asset 15@10x-8.png"
+              alt="Shrim Linguistics Logo"
+              width={120}
+              height={60}
+              className="h-12 w-auto"
+            />
             <div className="ml-2 text-xs text-gray-300">
               <p>Rameshwari Milind Jori -</p>
               <p>Proprietor/ Founder</p>

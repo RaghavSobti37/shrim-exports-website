@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --shrim-green: #083c27;
+  --shrim-green: #135936;
   --shrim-green-light: #126343;
   --shrim-gold: #c69f2e;
   --shrim-gold-light: #dcb33f;
@@ -16,8 +16,7 @@
   --color-shrim-green-light: var(--shrim-green-light);
   --color-shrim-gold: var(--shrim-gold);
   --color-shrim-gold-light: var(--shrim-gold-light);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
 }
 
 body {

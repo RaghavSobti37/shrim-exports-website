@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -20,15 +21,13 @@ export default function Navbar() {
         <div className="flex justify-between h-20 items-center">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              {/* Custom Logo SVG Placeholder to match the image */}
-              <div className="w-8 h-10 flex border-l-4 border-shrim-gold pl-1">
-                <div className="w-2 h-full bg-shrim-green"></div>
-                <div className="w-2 h-3/4 bg-gray-400 mt-auto ml-1"></div>
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-xl font-bold text-shrim-green uppercase tracking-wide">Shrim</span>
-                <span className="text-sm font-semibold text-gray-600 uppercase tracking-widest">Export</span>
-              </div>
+              <Image
+                src="/images/Asset 6@5x-8.png"
+                alt="Shrim Export Logo"
+                width={100}
+                height={150}
+                priority
+              />
             </Link>
           </div>
           <div className="hidden md:flex space-x-8 h-full items-center">

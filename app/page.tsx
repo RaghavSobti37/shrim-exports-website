@@ -58,9 +58,9 @@ export default function Home() {
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight">
-            FROM INDIAN SOIL TO YOUR <span className="text-shrim-gold">SHELVES</span>,
+            FROM INDIAN SOIL TO YOUR <span className="text-shrim-gold italic">SHELVES</span>,
             <br />
-            FROM OUR <span className="text-shrim-gold">ROOTS</span> TO YOUR HOMES.
+            FROM OUR <span className="text-shrim-gold italic">ROOTS</span> TO YOUR HOMES.
           </h1>
           <p className="mt-6 text-lg text-gray-200">
             Farm Direct Sourcing | Full Batch Traceability
@@ -70,20 +70,20 @@ export default function Home() {
             <Link href="/product-catalogue" className="px-8 py-3 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow-lg transition-colors">
               VIEW OUR PRODUCTS
             </Link>
-            <Link href="#quote" className="px-8 py-3 bg-transparent border-2 border-shrim-gold text-shrim-gold hover:bg-shrim-gold hover:text-white font-bold rounded transition-colors">
+            <Link href="#quote" className="px-8 py-3 bg-shrim-gold text-white font-bold rounded shadow-lg transition-colors hover:bg-shrim-gold-light">
               GET QUOTE
             </Link>
           </div>
 
           <div className="mt-20 flex flex-col sm:flex-row gap-12">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-12 flex border-l-2 border-shrim-gold pl-1">
-                <div className="w-2 h-full bg-white"></div>
-                <div className="w-2 h-3/4 bg-gray-300 mt-auto ml-1"></div>
-              </div>
-              <div>
-                <p className="text-white font-bold tracking-wide">SHRIM <span className="text-gray-300 text-xs tracking-widest font-normal uppercase block">Export</span></p>
-              </div>
+              <Image
+                src="/images/Asset 14@10x-8.png"
+                alt="Shrim Export Logo"
+                width={120}
+                height={60}
+                className="h-12 w-auto"
+              />
               <div className="ml-2 text-sm text-gray-300">
                 <p>Milind Madhukar Jori -</p>
                 <p>Cofounder</p>
@@ -91,13 +91,13 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="w-8 h-12 flex border-l-2 border-shrim-gold pl-1">
-                <div className="w-2 h-full bg-white"></div>
-                <div className="w-2 h-3/4 bg-gray-300 mt-auto ml-1"></div>
-              </div>
-              <div>
-                <p className="text-white font-bold tracking-wide">SHRIM <span className="text-gray-300 text-xs tracking-widest font-normal uppercase block">Linguistics</span></p>
-              </div>
+              <Image
+                src="/images/Asset 15@10x-8.png"
+                alt="Shrim Linguistics Logo"
+                width={120}
+                height={60}
+                className="h-12 w-auto"
+              />
               <div className="ml-2 text-sm text-gray-300">
                 <p>Rameshwari Milind Jori -</p>
                 <p>Proprietor/ Founder</p>
@@ -112,7 +112,7 @@ export default function Home() {
       <section className="py-24 bg-white text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 tracking-tight mb-4">OUR EXPORT CERTIFICATIONS</h2>
-          <p className="text-gray-600 max-w-3xl mx-auto mb-16 text-sm">
+          <p className="text-gray-600 max-w-3xl mx-auto mb-16 text-sm text-left font-medium">
             Every shipment from Shrim Export carries the weight of regulatory verification — not as a formality, but as a non-negotiable standard. Here is what we hold, and what it means for you.
           </p>
           
@@ -148,7 +148,7 @@ export default function Home() {
           </div>
 
           <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <span className="text-gray-800 font-black tracking-wide">BULK DEHYDRATED PRODUCTS AVAILABLE</span>
+            <span className="text-gray-800 font-bold tracking-wide">BULK DEHYDRATED PRODUCTS AVAILABLE</span>
             <Link href="/product-catalogue" className="px-6 py-2 bg-shrim-green hover:bg-shrim-green-light text-white font-bold rounded shadow transition-colors text-sm">
               VIEW FULL CATALOG
             </Link>
