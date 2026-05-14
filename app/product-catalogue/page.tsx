@@ -1,3 +1,4 @@
+import image from 'next/image';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -5,66 +6,59 @@ export default function ProductCatalogue() {
   const catalogProducts = [
     {
       id: 1,
-      title: "Fresh Fruits & Vegetables",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
-      moq: "MOQ -",
-      image: "/images/fresh_fruits_vegetables.png"
+      title: "G4 Green Chilli",
+      description: ["Colour:Deep Green", "Size: 6cm to 10cm", "Pungency: Medium to High", "Shelf Life: 10 to 15 Days", "Origin: India"],
+      moq: "",
+      image: "/images/chilly.jpeg"
     },
     {
       id: 2,
-      title: "Turmeric Finger",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
-      moq: "MOQ -",
-      image: "/images/turmeric_fingers.png"
+      title: "Fresh Onion",
+      description: ["Colour:Red/ White", "Size: 40mm to 70mm +", "Shelf Life: 20 to 30 Days", "Origin: India"],
+      moq: "",
+      image: "/images/onions.jpeg"
     },
     {
       id: 3,
-      title: "Millet Cookies",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
-      moq: "MOQ -",
-      image: "/images/millet_cookies.png"
+      title: "Candevish Banana",
+      description: ["Variety:G9 Cavendish Banana", "Colour: Green (Unripe)", "Length: 18 to 25 cm", "Finger Count: 5 to 7 per hand", "Shelf Life: 15 to 25 Days", "Origin: India."],
+      moq: "",
+      image: "/images/bananas.jpeg"
     },
     {
       id: 4,
-      title: "Fresh Fruits & Vegetables",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
-      moq: "MOQ -",
-      image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop"
+      title: "Fresh Pomogrenate",
+      description: ["Variety:Bhagwa / Ganesh", "Colour:Deep Red", "Size: 200g to 400g per fruit", "Taste: Sweet", "Shelf Life: 20 to 30 Days", "Origin: India."],
+      moq: "",
+      image: "/images/Pomogranet.jpeg"
     },
     {
       id: 5,
-      title: "Turmeric Finger",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
-      moq: "MOQ -",
-      image: "https://images.unsplash.com/photo-1588667630713-376c72551e36?q=80&w=600&auto=format&fit=crop"
+      title: "Frozen Vegetables",
+      description: ["Processing:IQF - (Individually Quick Frozen)", "Temperature:18°C or below", "Shelf Life:12 to 24 Months", "Packaging:Bulk / Retail Packs", "Quality:Export Grade", "Origin:India."],
+      moq: "",
+      image: "/images/frozen_veggies.jpeg"
     },
     {
       id: 6,
-      title: "Millet Cookies",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
-      moq: "MOQ -",
-      image: "https://images.unsplash.com/photo-1588667630713-376c72551e36?q=80&w=600&auto=format&fit=crop"
+      title: "Dehydrated Vegetables",
+      description: ["Form: Flakes / Powder / Granules", "Moisture: < 6%", "Color: Natural", "Shelf Life: 12 – 24 Months", "Processing: Air-dried / Dehydrated", "Origin: India."],
+      moq: "",
+      image: "/images/spices.jpeg"
     },
     {
       id: 7,
-      title: "Fresh Fruits & Vegetables",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
-      moq: "MOQ -",
-      image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop"
+      title: "Fresh Turmeric",
+      description: ["Product: Fresh Turmeric (Raw Haldi)", "Colour:Yellow / Orange", "Variety:Salem/ Rajapuri", "Size:Medium to Large Fingers", "Curcumin:3% – 5% (Approx.)", "Shelf Life:20 – 30 Days", "Origin:India."],
+      moq: "",
+      image: "/images/Tumeric_fingers.jpeg"
     },
     {
       id: 8,
-      title: "Turmeric Finger",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
+      title: "Semi Husk Coconut",
+      description: ["Color: Brown","Weight: 500g – 700g / 650g+ / 800g+ (as per buyer requirement)","Shelf Life: 45–60 days","Packing: 13kg / 25kg PP bags or mesh bags","Loading: 40ft container"],
       moq: "MOQ -",
-      image: "https://images.unsplash.com/photo-1588667630713-376c72551e36?q=80&w=600&auto=format&fit=crop"
-    },
-    {
-      id: 9,
-      title: "Millet Cookies",
-      description: ["PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION", "PRODUCT DESCRIPTION"],
-      moq: "MOQ -",
-      image: "https://images.unsplash.com/photo-1588667630713-376c72551e36?q=80&w=600&auto=format&fit=crop"
+      image: "/images/Coconut.jpeg"
     }
   ];
 
@@ -88,9 +82,21 @@ export default function ProductCatalogue() {
             <div key={product.id} className="flex flex-col">
               <h3 className="text-shrim-green font-bold mb-3">{product.title}</h3>
               <div className="text-xs text-gray-500 mb-4 space-y-1 font-mono">
-                {product.description.map((desc, idx) => (
-                  <p key={idx} className="uppercase">{desc}</p>
-                ))}
+                {product.description.map((desc, idx) => {
+                  const colonIndex = desc.indexOf(':');
+                  if (colonIndex !== -1) {
+                    const boldPart = desc.slice(0, colonIndex);
+                    const rest = desc.slice(colonIndex + 1);
+                    return (
+                      <p key={idx}>
+                        <span className="font-semibold">{boldPart}:</span>{rest}
+                      </p>
+                    );
+                  }
+                  return (
+                    <p key={idx}>{desc}</p>
+                  );
+                })}
                 <p className="mt-2 text-gray-700">{product.moq}</p>
               </div>
               <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">

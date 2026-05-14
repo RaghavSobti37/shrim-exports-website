@@ -9,8 +9,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Exports', path: '/#exports' }, // Using anchor since we didn't specify an exports page
-    { name: 'Product Catalogue', path: '/product-catalogue' },
+    { name: 'Export Product Catalogue', path: '/product-catalogue' },
     { name: 'Linguistics', path: '/linguistics' },
     { name: 'About', path: '/#about' }, // Using anchor since we didn't specify an about page
   ];
