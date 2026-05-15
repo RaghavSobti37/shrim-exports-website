@@ -88,13 +88,13 @@ export default function ProductCatalogue() {
                     const boldPart = desc.slice(0, colonIndex);
                     const rest = desc.slice(colonIndex + 1);
                     return (
-                      <p key={idx}>
+                      <p key={idx} className="text-sm">
                         <span className="font-semibold">{boldPart}:</span>{rest}
                       </p>
                     );
                   }
                   return (
-                    <p key={idx}>{desc}</p>
+                    <p key={idx} className='text-5xl bg-amber-100'>{desc}</p>
                   );
                 })}
                 <p className="mt-2 text-gray-700">{product.moq}</p>

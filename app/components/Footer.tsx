@@ -13,7 +13,7 @@ export default function Footer() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-2">
                   <Image
-                    src="/images/Asset 14@10x-8.png"
+                    src="/images/Asset 14@10x-8 copy.png"
                     alt="Shrim Export Logo"
                     width={100}
                     height={50}
@@ -32,7 +32,7 @@ export default function Footer() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-2">
                   <Image
-                    src="/images/Asset 15@10x-8.png"
+                    src="/images/Asset 15@10x-8 copy.png"
                     alt="Shrim Linguistics Logo"
                     width={100}
                     height={50}
