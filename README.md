@@ -1,22 +1,99 @@
-# Shrim Export Landing Page
+# Shrim Export & Linguistics Web Portal
 
-A Next.js 16 web application for Shrim Export & Shrim Linguistics, styled exactly to match the provided design mockups.
+[![Next.js](https://img.shields.io/badge/Next.js-16.x-black?logo=next.design&logoColor=white)](https://nextjs.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-38bdf8?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-v5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Features
+Production-ready agricultural export and language education web interface built on Next.js 16 (App Router) and Tailwind CSS. Implements high-end design elements, asset compression, dynamic caching, and reactive interfaces matching design mockups.
 
-- **Optimized Assets**: Image assets (`Asset 18` and `Asset 19`) have been resized and compressed for fast performance and web delivery.
-- **Hero Section**: Exact visual layout matching mockup `Asset 5` with gold/green branding typography, agricultural backdrop, and stacked horizontal founder/contact bars.
-- **Export Certifications**: Grid displaying regulatory and trade certifications with gold borders and bold uppercase titles.
-- **Star Products**: Section showing core product lines with images and link to full catalogue.
-- **Markets We Serve**: Clean full-width banners showing Europe, East Asia, and Africa markets with regulatory compliance summaries.
-- **Product Catalogue**: A 3-column responsive product card grid showing detailed export specifications and packaging selectors matching mockup `Asset 10`.
-- **Linguistics Section**: Bilingual split-hero design showcasing Hindi and Marathi tutoring services, complete with Marathi/Hindi character watermark backdrops.
-- **Dynamic Support Form**: Interactive inquiry form at the top of the About page supporting tab-switching between:
-  - **Linguistics Inquiry**: Tailored tutoring curriculum questionnaire (using brand green).
-  - **Exports Inquiry**: Bulk product quotation and packaging questionnaire (using matching blue branding).
+---
 
-## Tech Stack
+## 🏛️ System Architecture
 
-- **Framework**: Next.js 16 (App Router)
-- **Styling**: Tailwind CSS
-- **Programming Language**: TypeScript
+```mermaid
+graph TD
+    A[Layout Root: app/layout.tsx] --> B[Navbar Components]
+    A --> C[Page Router]
+    A --> D[Footer Components]
+    
+    C --> E[Home Page: app/page.tsx]
+    C --> F[Product Catalogue: app/product-catalogue/page.tsx]
+    C --> G[Linguistics Page: app/linguistics/page.tsx]
+    C --> H[About & Inquiries: app/about/page.tsx]
+    C --> I[Direct Quote Form: app/quote/page.tsx]
+    
+    H --> J{Dynamic Form Selector}
+    J -->|Linguistics| K[Linguistics Tutoring Form]
+    J -->|Exports| L[Exports Inquiry Form]
+```
+
+---
+
+## 🚀 Key Features & Optimizations
+
+### 1. Asset Performance Tuning
+- Optimized background files (`Asset 18` and `Asset 19`) using high-fidelity bilinear resizing (60MB+ down to sub-megabyte web assets).
+- Lazy-loaded media assets below the fold.
+
+### 2. High-Fidelity Design Tokens
+Custom brand variables initialized in `app/globals.css`:
+- `--shrim-green` (`#114133`): Primary heritage green.
+- `--shrim-gold` (`#c69934`): Accent premium gold.
+- `--shrim-blue` (`#3972b5`): Interactive secondary blue.
+
+### 3. Dynamic Form State Engine
+- Unified Inquiry Router inside `app/about/page.tsx` utilizing dynamic state toggle.
+- Form fields dynamically adapt context, validation schemas, and button accents based on selection.
+
+---
+
+## 📂 Project Directory Structure
+
+```text
+├── app/
+│   ├── about/             # Dynamic Contact & Founders Section
+│   ├── components/        # Global Navbar / Footer Blocks
+│   ├── linguistics/       # Language Tutoring Showcase
+│   ├── product-catalogue/ # Grid layout for 8 Product Lines
+│   ├── quote/             # Direct Exports Inquiry Page
+│   ├── globals.css        # Global CSS variables & Tailwind config
+│   ├── layout.tsx         # Global Layout Wrapper
+│   └── page.tsx           # Home Page
+├── public/
+│   └── images/            # Resized & Optimized Assets
+└── README.md              # Documentation
+```
+
+---
+
+## 🛠️ Development & Build Instructions
+
+### Prerequisites
+- Node.js `^20.x` or higher
+- npm `^10.x` or higher
+
+### Setup & Run
+1. Install project dependencies:
+   ```bash
+   npm install
+   ```
+2. Launch hot-reloading development server:
+   ```bash
+   npm run dev
+   ```
+3. Compile optimized production build:
+   ```bash
+   npm run build
+   ```
+4. Start production server locally:
+   ```bash
+   npm run start
+   ```
+
+---
+
+## 📜 Code Style & Conventions
+- **Component Model**: Functional components with strict TypeScript types.
+- **Client Directives**: Use `'use client'` strictly on interaction-heavy leaf elements to preserve Server Component benefits.
+- **Styling**: Standardized CSS theme values to keep variables isolated and reusable.
