@@ -3,10 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --shrim-green: #135936;
-  --shrim-green-light: #126343;
-  --shrim-gold: #c69f2e;
+  --shrim-green: #114133;
+  --shrim-green-light: #165643;
+  --shrim-gold: #c69934;
   --shrim-gold-light: #dcb33f;
+  --shrim-blue: #3972b5;
+  --shrim-blue-light: #4c87c9;
 }
 
 @theme inline {
@@ -16,6 +18,8 @@
   --color-shrim-green-light: var(--shrim-green-light);
   --color-shrim-gold: var(--shrim-gold);
   --color-shrim-gold-light: var(--shrim-gold-light);
+  --color-shrim-blue: var(--shrim-blue);
+  --color-shrim-blue-light: var(--shrim-blue-light);
   --font-sans: var(--font-inter);
 }
 
