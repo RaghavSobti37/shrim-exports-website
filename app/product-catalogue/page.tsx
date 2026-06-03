@@ -56,7 +56,7 @@ export default function ProductCatalogue() {
       id: 8,
       title: "Semi Husk Coconut",
       description: ["Color: Brown", "Weight: 500g – 700g / 650g+ / 800g+ (as per buyer requirement)", "Shelf Life: 45–60 days", "Packing: 13kg / 25kg PP bags or mesh bags", "Loading: 40ft container"],
-      moq: "MOQ -",
+      moq: "",
       image: "/images/Coconut.jpeg"
     }
   ];

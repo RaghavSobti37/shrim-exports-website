@@ -1,10 +1,52 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import Image from 'next/image';
+import WhatsAppLink from '../components/WhatsAppLink';
+import { CONTACT_EMAIL, PHONE_MILIND, PHONE_RAMESHWARI } from '../lib/contact';
+
+const formFieldClass =
+  'w-full h-12 px-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-green text-sm font-semibold text-gray-700';
 
 export default function About() {
   const [formType, setFormType] = useState<'linguistics' | 'exports'>('linguistics');
+
+  const handleLinguisticsSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const lines = [
+      `Service: ${data.get('service')}`,
+      `Name: ${data.get('name')}`,
+      `Country: ${data.get('country')}`,
+      `Language Requirement: ${data.get('languageRequirement')}`,
+      `Learners: ${data.get('learners')}`,
+      `Preferred Batch: ${data.get('preferredBatch')}`,
+      `Notes: ${data.get('notes')}`,
+    ];
+    const subject = encodeURIComponent('Linguistics Inquiry - Shrim Export');
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  };
+
+  const handleExportsSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const lines = [
+      `Product: ${data.get('product')}`,
+      `Name: ${data.get('name')}`,
+      `Company: ${data.get('company')}`,
+      `Country: ${data.get('country')}`,
+      `Product Requirement: ${data.get('productRequirement')}`,
+      `Quantity: ${data.get('quantity')}`,
+      `Packaging: ${data.get('packaging')}`,
+      `Notes: ${data.get('notes')}`,
+    ];
+    const subject = encodeURIComponent('Export Quote Inquiry - Shrim Export');
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -48,13 +90,13 @@ export default function About() {
           {/* Form Switcher */}
           {formType === 'linguistics' ? (
             /* Linguistics Inquiry Form */
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleLinguisticsSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
                     Service *
                   </label>
-                  <select className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-green text-sm font-semibold text-gray-700 bg-white">
+                  <select name="service" required className={`${formFieldClass} bg-white`}>
                     <option>Linguistics Tutoring</option>
                     <option>Marathi Tutoring</option>
                     <option>Hindi Tutoring</option>
@@ -67,9 +109,10 @@ export default function About() {
                   </label>
                   <input
                     type="text"
+                    name="name"
                     required
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-green text-sm font-semibold text-gray-700"
+                    className={formFieldClass}
                   />
                 </div>
 
@@ -79,9 +122,10 @@ export default function About() {
                   </label>
                   <input
                     type="text"
+                    name="country"
                     required
                     placeholder="United States"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-green text-sm font-semibold text-gray-700"
+                    className={formFieldClass}
                   />
                 </div>
 
@@ -89,7 +133,7 @@ export default function About() {
                   <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
                     Language Requirement *
                   </label>
-                  <select className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-green text-sm font-semibold text-gray-700 bg-white">
+                  <select name="languageRequirement" required className={`${formFieldClass} bg-white`}>
                     <option>Conversational & Cultural</option>
                     <option>Reading, Writing & Speaking</option>
                     <option>Academic Curriculum</option>
@@ -103,10 +147,11 @@ export default function About() {
                   </label>
                   <input
                     type="number"
+                    name="learners"
                     required
                     min="1"
                     defaultValue="1"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-green text-sm font-semibold text-gray-700"
+                    className={formFieldClass}
                   />
                 </div>
 
@@ -114,7 +159,7 @@ export default function About() {
                   <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
                     Preferred Batch *
                   </label>
-                  <select className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-green text-sm font-semibold text-gray-700 bg-white">
+                  <select name="preferredBatch" required className={`${formFieldClass} bg-white`}>
                     <option>Weekdays (Morning)</option>
                     <option>Weekdays (Evening)</option>
                     <option>Weekends (Morning)</option>
@@ -128,6 +173,7 @@ export default function About() {
                   Anything Else We Should Know *
                 </label>
                 <textarea
+                  name="notes"
                   rows={4}
                   required
                   placeholder="Timezone, learner's age, prior knowledge, or specific learning goals..."
@@ -146,13 +192,13 @@ export default function About() {
             </form>
           ) : (
             /* Exports Quote Form */
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleExportsSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
                     Product *
                   </label>
-                  <select className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-blue text-sm font-semibold text-gray-700 bg-white">
+                  <select name="product" required className={`${formFieldClass} bg-white focus:border-shrim-blue`}>
                     <option>Fresh Onion (Red/White)</option>
                     <option>G4 Green Chilli</option>
                     <option>Cavendish Banana</option>
@@ -171,9 +217,10 @@ export default function About() {
                   </label>
                   <input
                     type="text"
+                    name="name"
                     required
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-blue text-sm font-semibold text-gray-700"
+                    className={`${formFieldClass} focus:border-shrim-blue`}
                   />
                 </div>
 
@@ -183,9 +230,10 @@ export default function About() {
                   </label>
                   <input
                     type="text"
+                    name="company"
                     required
                     placeholder="Global Trading Corp"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-blue text-sm font-semibold text-gray-700"
+                    className={`${formFieldClass} focus:border-shrim-blue`}
                   />
                 </div>
 
@@ -195,9 +243,10 @@ export default function About() {
                   </label>
                   <input
                     type="text"
+                    name="country"
                     required
                     placeholder="Netherlands"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-blue text-sm font-semibold text-gray-700"
+                    className={`${formFieldClass} focus:border-shrim-blue`}
                   />
                 </div>
 
@@ -205,7 +254,7 @@ export default function About() {
                   <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
                     Mention Product Requirement *
                   </label>
-                  <select className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-blue text-sm font-semibold text-gray-700 bg-white">
+                  <select name="productRequirement" required className={`${formFieldClass} bg-white focus:border-shrim-blue`}>
                     <option>Fresh / Raw Product</option>
                     <option>IQF Frozen Grade</option>
                     <option>Dehydrated (Flakes/Granules/Powder)</option>
@@ -219,9 +268,10 @@ export default function About() {
                   </label>
                   <input
                     type="text"
+                    name="quantity"
                     required
                     placeholder="e.g. 15 Metric Tons / 1x40ft Container"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-blue text-sm font-semibold text-gray-700"
+                    className={`${formFieldClass} focus:border-shrim-blue`}
                   />
                 </div>
               </div>
@@ -230,7 +280,7 @@ export default function About() {
                 <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
                   Preferred Packaging *
                 </label>
-                <select className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-blue text-sm font-semibold text-gray-700 bg-white">
+                <select name="packaging" required className={`${formFieldClass} bg-white focus:border-shrim-blue`}>
                   <option>PP Mesh Bags (25kg / 50kg)</option>
                   <option>Corrugated Carton Boxes</option>
                   <option>Bulk Bags / Palletized</option>
@@ -243,6 +293,7 @@ export default function About() {
                   Anything Else We Should Know *
                 </label>
                 <textarea
+                  name="notes"
                   rows={4}
                   required
                   placeholder="Specific certifications required, port of destination, target delivery schedule, or payment terms..."
@@ -290,9 +341,19 @@ export default function About() {
               <p className="text-gray-600 text-sm leading-relaxed text-center mb-6 font-medium">
                 Milind Madhukar Jori is the Co-Founder of Shrim Export. With extensive experience in agricultural trade, business development, and supply chain management, he leads the export division's operations, ensuring that the highest standards of quality and traceability are maintained across all shipments.
               </p>
-              <div className="text-xs text-gray-400 font-bold space-y-1 text-center border-t border-gray-200/50 pt-4 w-full">
-                <p>Phone: +91 9689971271</p>
-                <p>Email: rameshwarijori@shrimexport.com</p>
+              <div className="text-xs text-gray-400 font-normal space-y-1 text-center border-t border-gray-200/50 pt-4 w-full">
+                <p>
+                  Phone:{' '}
+                  <WhatsAppLink phone={PHONE_MILIND} className="hover:text-shrim-green transition-colors">
+                    {PHONE_MILIND}
+                  </WhatsAppLink>
+                </p>
+                <p>
+                  Email:{' '}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-shrim-green transition-colors">
+                    {CONTACT_EMAIL}
+                  </a>
+                </p>
               </div>
             </div>
 
@@ -315,9 +376,19 @@ export default function About() {
               <p className="text-gray-600 text-sm leading-relaxed text-center mb-6 font-medium">
                 Rameshwari Milind Jori is the Proprietor and Founder of Shrim Linguistics and Co-Founder of Shrim Export. Combining a deep passion for language education with corporate excellence, she designs the tutoring programs and oversees customer relationship management, connecting learners globally to their linguistic heritage.
               </p>
-              <div className="text-xs text-gray-400 font-bold space-y-1 text-center border-t border-gray-200/50 pt-4 w-full">
-                <p>Phone: +91 9371758355</p>
-                <p>Email: rameshwarijori@shrimexport.com</p>
+              <div className="text-xs text-gray-400 font-normal space-y-1 text-center border-t border-gray-200/50 pt-4 w-full">
+                <p>
+                  Phone:{' '}
+                  <WhatsAppLink phone={PHONE_RAMESHWARI} className="hover:text-shrim-green transition-colors">
+                    {PHONE_RAMESHWARI}
+                  </WhatsAppLink>
+                </p>
+                <p>
+                  Email:{' '}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-shrim-green transition-colors">
+                    {CONTACT_EMAIL}
+                  </a>
+                </p>
               </div>
             </div>
           </div>

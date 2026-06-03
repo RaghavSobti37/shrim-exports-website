@@ -1,99 +1,170 @@
-# Shrim Export & Linguistics Web Portal
+# Shrim Export & Linguistics
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.x-black?logo=next.design&logoColor=white)](https://nextjs.org/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-38bdf8?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-v5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-Production-ready agricultural export and language education web interface built on Next.js 16 (App Router) and Tailwind CSS. Implements high-end design elements, asset compression, dynamic caching, and reactive interfaces matching design mockups.
+Marketing site for **Shrim Export** (agricultural exports) and **Shrim Linguistics** (Hindi & Marathi tutoring). Built with the Next.js App Router, static generation, and brand-aligned UI from client review mockups.
+
+**Live:** [shrim-exports-website.vercel.app](https://shrim-exports-website.vercel.app)
 
 ---
 
-## 🏛️ System Architecture
+## Overview
+
+| Area | Description |
+|------|-------------|
+| **Exports** | Product catalogue, quote inquiry, farm-direct positioning |
+| **Linguistics** | Language tutoring for NRIs & residents |
+| **Contact** | About page with dual forms; phones open WhatsApp |
+| **Brand** | Heritage green, gold accents, optimized imagery |
+
+---
+
+## Pages
+
+| Route | Purpose |
+|-------|---------|
+| `/` | Hero, founder strip, star products (first 3 catalogue items), markets |
+| `/product-catalogue` | Full product grid with specs |
+| `/linguistics` | Tutoring offer, how-it-works |
+| `/about` | Linguistics / exports inquiry forms, founders |
+| `/quote` | Standalone export quote form |
+
+**Navigation:** Home · Export Product Catalogue · Linguistics · About  
+**Mobile:** Hamburger menu with overlay (`app/components/Navbar.tsx`).
+
+---
+
+## Architecture
 
 ```mermaid
-graph TD
-    A[Layout Root: app/layout.tsx] --> B[Navbar Components]
-    A --> C[Page Router]
-    A --> D[Footer Components]
-    
-    C --> E[Home Page: app/page.tsx]
-    C --> F[Product Catalogue: app/product-catalogue/page.tsx]
-    C --> G[Linguistics Page: app/linguistics/page.tsx]
-    C --> H[About & Inquiries: app/about/page.tsx]
-    C --> I[Direct Quote Form: app/quote/page.tsx]
-    
-    H --> J{Dynamic Form Selector}
-    J -->|Linguistics| K[Linguistics Tutoring Form]
-    J -->|Exports| L[Exports Inquiry Form]
+flowchart TB
+  layout[app/layout.tsx]
+  layout --> nav[Navbar]
+  layout --> pages[App Router pages]
+  layout --> footer[Footer]
+
+  pages --> home[/]
+  pages --> catalogue[/product-catalogue]
+  pages --> ling[/linguistics]
+  pages --> about[/about]
+  pages --> quote[/quote]
+
+  about --> mailto[mailto inquiry - temporary]
+  footer --> wa[WhatsApp via contact.ts]
+  home --> lib[app/lib/contact.ts]
 ```
 
----
+### Shared modules
 
-## 🚀 Key Features & Optimizations
+- `app/lib/contact.ts` — Email, phone constants, `whatsAppUrl()`, star product list
+- `app/components/WhatsAppLink.tsx` — Reusable `wa.me` links
+- `app/components/Navbar.tsx` / `Footer.tsx` — Global chrome
 
-### 1. Asset Performance Tuning
-- Optimized background files (`Asset 18` and `Asset 19`) using high-fidelity bilinear resizing (60MB+ down to sub-megabyte web assets).
-- Lazy-loaded media assets below the fold.
+### Design tokens (`app/globals.css`)
 
-### 2. High-Fidelity Design Tokens
-Custom brand variables initialized in `app/globals.css`:
-- `--shrim-green` (`#114133`): Primary heritage green.
-- `--shrim-gold` (`#c69934`): Accent premium gold.
-- `--shrim-blue` (`#3972b5`): Interactive secondary blue.
-
-### 3. Dynamic Form State Engine
-- Unified Inquiry Router inside `app/about/page.tsx` utilizing dynamic state toggle.
-- Form fields dynamically adapt context, validation schemas, and button accents based on selection.
+| Token | Role |
+|-------|------|
+| `--shrim-green` | Primary brand |
+| `--shrim-gold` | CTAs & accents |
+| `--shrim-blue` | Export form accents |
 
 ---
 
-## 📂 Project Directory Structure
+## Recent changes (review pass)
+
+- Merged nav: **Export Product Catalogue** (header + footer aligned)
+- Removed home certifications section; star products match catalogue order
+- Hero gradient (opaque → transparent); italic emphasis on *shelves* / *roots* (no cursive)
+- Footer: contact beside logos, left-aligned copyright, [D'Mosh Global](https://dmoshglobal.com) credit
+- Site-wide WhatsApp on published phone numbers
+- About forms: uniform field heights; `mailto:` submit to `rameshwarijori@shrimexport.com` (server email deferred — see `TODO.md`)
+- Mobile hamburger navigation
+
+---
+
+## Project structure
 
 ```text
+export-landing-page/
 ├── app/
-│   ├── about/             # Dynamic Contact & Founders Section
-│   ├── components/        # Global Navbar / Footer Blocks
-│   ├── linguistics/       # Language Tutoring Showcase
-│   ├── product-catalogue/ # Grid layout for 8 Product Lines
-│   ├── quote/             # Direct Exports Inquiry Page
-│   ├── globals.css        # Global CSS variables & Tailwind config
-│   ├── layout.tsx         # Global Layout Wrapper
-│   └── page.tsx           # Home Page
-├── public/
-│   └── images/            # Resized & Optimized Assets
-└── README.md              # Documentation
+│   ├── about/
+│   ├── components/     # Navbar, Footer, WhatsAppLink
+│   ├── lib/              # contact.ts
+│   ├── linguistics/
+│   ├── product-catalogue/
+│   ├── quote/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── public/images/
+├── TODO.md               # Deferred work
+└── README.md
 ```
 
 ---
 
-## 🛠️ Development & Build Instructions
+## Getting started
 
 ### Prerequisites
-- Node.js `^20.x` or higher
-- npm `^10.x` or higher
 
-### Setup & Run
-1. Install project dependencies:
-   ```bash
-   npm install
-   ```
-2. Launch hot-reloading development server:
-   ```bash
-   npm run dev
-   ```
-3. Compile optimized production build:
-   ```bash
-   npm run build
-   ```
-4. Start production server locally:
-   ```bash
-   npm run start
-   ```
+- Node.js 20+
+- npm 10+
+
+### Install & run
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Production
+
+```bash
+npm run build
+npm run start
+```
+
+### Deploy
+
+Optimized for [Vercel](https://vercel.com). Push `main` to trigger deploy when the repo is connected.
 
 ---
 
-## 📜 Code Style & Conventions
-- **Component Model**: Functional components with strict TypeScript types.
-- **Client Directives**: Use `'use client'` strictly on interaction-heavy leaf elements to preserve Server Component benefits.
-- **Styling**: Standardized CSS theme values to keep variables isolated and reusable.
+## Environment & secrets
+
+No required env vars for the current static + `mailto:` flow.
+
+When server-side email is added (see `TODO.md`), use `.env.local` — never commit secrets. `.gitignore` already excludes `.env*`.
+
+---
+
+## Deferred work
+
+Track open items in [`TODO.md`](./TODO.md):
+
+- Server-side form email (Resend or similar)
+- `/quote` form parity with About
+- `/#exports` content decision
+- Product catalogue “SELECT PACKAGING” behaviour
+
+---
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Run production build |
+| `npm run lint` | ESLint |
+
+---
+
+## License
+
+MIT — see repository license file if present.

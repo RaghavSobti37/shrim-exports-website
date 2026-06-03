@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import WhatsAppLink from '../components/WhatsAppLink';
+import { PHONE_RAMESHWARI } from '../lib/contact';
 
 export default function Linguistics() {
   return (
@@ -46,12 +48,14 @@ export default function Linguistics() {
               alt="Shrim Linguistics Logo"
               width={120}
               height={60}
-              className="h-10 w-auto brightness-110"
+              className="h-10 w-auto brightness-110 shrink-0"
             />
-            <div className="ml-2 text-xs text-gray-300 font-bold">
+            <div className="text-xs text-gray-300 font-normal">
               <p>Rameshwari Milind Jori -</p>
               <p>Proprietor/ Founder</p>
-              <p>+91 9371758355</p>
+              <WhatsAppLink phone={PHONE_RAMESHWARI} className="hover:text-white transition-colors">
+                {PHONE_RAMESHWARI}
+              </WhatsAppLink>
             </div>
           </div>
         </div>
