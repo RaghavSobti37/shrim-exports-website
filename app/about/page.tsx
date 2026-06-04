@@ -4,48 +4,63 @@ import { useState, FormEvent } from 'react';
 import Image from 'next/image';
 import WhatsAppLink from '../components/WhatsAppLink';
 import { CONTACT_EMAIL, PHONE_MILIND, PHONE_RAMESHWARI } from '../lib/contact';
+import InquiryFormFeedback from '../components/InquiryFormFeedback';
+import { submitInquiry } from '../lib/submit-inquiry';
 
 const formFieldClass =
   'w-full h-12 px-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-green text-sm font-semibold text-gray-700';
 
 export default function About() {
   const [formType, setFormType] = useState<'linguistics' | 'exports'>('linguistics');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successInbox, setSuccessInbox] = useState('');
 
-  const handleLinguisticsSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const formDataFrom = (data: FormData) =>
+    Object.fromEntries(
+      [...data.entries()].map(([key, value]) => [key, String(value)])
+    ) as Record<string, string>;
+
+  const handleLinguisticsSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const lines = [
-      `Service: ${data.get('service')}`,
-      `Name: ${data.get('name')}`,
-      `Country: ${data.get('country')}`,
-      `Language Requirement: ${data.get('languageRequirement')}`,
-      `Learners: ${data.get('learners')}`,
-      `Preferred Batch: ${data.get('preferredBatch')}`,
-      `Notes: ${data.get('notes')}`,
-    ];
-    const subject = encodeURIComponent('Linguistics Inquiry - Shrim Export');
-    const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    const email = String(data.get('email') ?? '').trim();
+    setStatus('sending');
+    setErrorMessage('');
+    try {
+      const result = await submitInquiry('linguistics', email, formDataFrom(data));
+      setSuccessInbox(result.to || CONTACT_EMAIL);
+      setStatus('success');
+      form.reset();
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : 'Could not send inquiry.');
+      setStatus('error');
+    }
   };
 
-  const handleExportsSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleExportsSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const lines = [
-      `Product: ${data.get('product')}`,
-      `Name: ${data.get('name')}`,
-      `Company: ${data.get('company')}`,
-      `Country: ${data.get('country')}`,
-      `Product Requirement: ${data.get('productRequirement')}`,
-      `Quantity: ${data.get('quantity')}`,
-      `Packaging: ${data.get('packaging')}`,
-      `Notes: ${data.get('notes')}`,
-    ];
-    const subject = encodeURIComponent('Export Quote Inquiry - Shrim Export');
-    const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    const email = String(data.get('email') ?? '').trim();
+    setStatus('sending');
+    setErrorMessage('');
+    try {
+      const result = await submitInquiry('export', email, formDataFrom(data));
+      setSuccessInbox(result.to || CONTACT_EMAIL);
+      setStatus('success');
+      form.reset();
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : 'Could not send inquiry.');
+      setStatus('error');
+    }
+  };
+
+  const switchForm = (type: 'linguistics' | 'exports') => {
+    setFormType(type);
+    setStatus('idle');
+    setErrorMessage('');
   };
 
   return (
@@ -60,7 +75,8 @@ export default function About() {
           {/* Tab Selector Buttons */}
           <div className="flex justify-center gap-4 mb-10">
             <button
-              onClick={() => setFormType('linguistics')}
+              type="button"
+              onClick={() => switchForm('linguistics')}
               className={`px-6 py-3 rounded-lg font-black text-sm uppercase tracking-wider transition-all duration-300 shadow ${
                 formType === 'linguistics'
                   ? 'bg-shrim-green text-white shadow-md'
@@ -70,7 +86,8 @@ export default function About() {
               Linguistics
             </button>
             <button
-              onClick={() => setFormType('exports')}
+              type="button"
+              onClick={() => switchForm('exports')}
               className={`px-6 py-3 rounded-lg font-black text-sm uppercase tracking-wider transition-all duration-300 shadow ${
                 formType === 'exports'
                   ? 'bg-shrim-green text-white shadow-md'
@@ -86,6 +103,12 @@ export default function About() {
               ? "Please fill out the form below for language tutoring inquiries. We will get back to you with session details and schedules."
               : "Please fill out the form below to request a quote. Our export division will get back to you with pricing, packaging, and shipping options."}
           </p>
+
+          <InquiryFormFeedback
+            status={status}
+            errorMessage={errorMessage}
+            successInbox={successInbox}
+          />
 
           {/* Form Switcher */}
           {formType === 'linguistics' ? (
@@ -111,7 +134,21 @@ export default function About() {
                     type="text"
                     name="name"
                     required
-                    placeholder="John Doe"
+                    placeholder="Raghav Raj Sobti"
+                    className={formFieldClass}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
+                    Your Email *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@example.com"
                     className={formFieldClass}
                   />
                 </div>
@@ -124,7 +161,7 @@ export default function About() {
                     type="text"
                     name="country"
                     required
-                    placeholder="United States"
+                    placeholder="India"
                     className={formFieldClass}
                   />
                 </div>
@@ -184,9 +221,10 @@ export default function About() {
               <div className="flex justify-center pt-4">
                 <button
                   type="submit"
-                  className="px-10 py-3.5 bg-shrim-green hover:bg-shrim-green-light text-white font-black rounded-lg shadow-lg transition-colors text-sm uppercase tracking-widest"
+                  disabled={status === 'sending'}
+                  className="px-10 py-3.5 bg-shrim-green hover:bg-shrim-green-light text-white font-black rounded-lg shadow-lg transition-colors text-sm uppercase tracking-widest disabled:opacity-60"
                 >
-                  Submit Inquiry
+                  {status === 'sending' ? 'Sending…' : 'Submit Inquiry'}
                 </button>
               </div>
             </form>
@@ -219,7 +257,21 @@ export default function About() {
                     type="text"
                     name="name"
                     required
-                    placeholder="John Doe"
+                    placeholder="Raghav Raj Sobti"
+                    className={`${formFieldClass} focus:border-shrim-blue`}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
+                    Your Email *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@example.com"
                     className={`${formFieldClass} focus:border-shrim-blue`}
                   />
                 </div>
@@ -304,9 +356,10 @@ export default function About() {
               <div className="flex justify-center pt-4">
                 <button
                   type="submit"
-                  className="px-10 py-3.5 bg-shrim-blue hover:bg-shrim-blue-light text-white font-black rounded-lg shadow-lg transition-colors text-sm uppercase tracking-widest"
+                  disabled={status === 'sending'}
+                  className="px-10 py-3.5 bg-shrim-blue hover:bg-shrim-blue-light text-white font-black rounded-lg shadow-lg transition-colors text-sm uppercase tracking-widest disabled:opacity-60"
                 >
-                  Send Inquiry
+                  {status === 'sending' ? 'Sending…' : 'Send Inquiry'}
                 </button>
               </div>
             </form>

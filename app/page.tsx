@@ -49,7 +49,7 @@ export default function Home() {
           
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/product-catalogue" className="px-8 py-3.5 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow-lg transition-colors text-sm uppercase tracking-wider">
-              VIEW OUR PRODUCTS
+              VIEW CATALOGUE
             </Link>
             <Link href="/quote" className="px-8 py-3.5 bg-shrim-gold text-white font-bold rounded shadow-lg transition-colors hover:bg-shrim-gold-light text-sm uppercase tracking-wider">
               GET QUOTE

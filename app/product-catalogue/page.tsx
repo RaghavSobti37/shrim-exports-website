@@ -71,9 +71,9 @@ export default function ProductCatalogue() {
 
         <div className="flex items-center justify-between gap-4 mb-16 border-b border-gray-100 pb-6">
           <span className="text-shrim-green font-black text-sm tracking-wider uppercase">Customized packaging available!</span>
-          <button className="px-6 py-2 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow transition-colors text-xs tracking-wider uppercase">
+          <Link href="/quote" className="px-6 py-2 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow transition-colors text-xs tracking-wider uppercase">
             SELECT PACKAGING
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">

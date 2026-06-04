@@ -4,13 +4,14 @@ Items deferred from review (`renewwebsiteprojectwork/`) and follow-up decisions.
 
 ## Forms & email
 
-- [ ] **Server-side form email** — Replace `mailto:` on About (Linguistics + Exports) with real submission (e.g. Resend API route or similar). Requires API keys and env vars on Vercel/Render.
-- [ ] **`/quote` form** — Wire same email flow as About exports form once server-side email is in place.
+- [ ] **Gmail App Password** — Add `GMAIL_APP_PASSWORD` to `.env.local` (and Vercel env) for `rameshwarijori@shrimexport.com`. Create at [Google App Passwords](https://myaccount.google.com/apppasswords) (2-Step Verification required). Until set, forms return “Gmail is not configured.”
+- [x] **Server-side form email** — `/api/inquiry` via Gmail SMTP (`GMAIL_USER` + `GMAIL_APP_PASSWORD`).
+- [x] **`/quote` form** — Same API flow as About exports form.
 
 ## Navigation & content
 
 - [ ] **`/#exports` anchor** — Certifications section was removed. Decide whether home needs a new exports section or catalogue link alone is enough.
-- [ ] **Product catalogue — “SELECT PACKAGING”** — Button has no action; implement behaviour or remove.
+- [x] **Product catalogue — “SELECT PACKAGING”** — Links to `/quote`.
 
 ## Done (reference)
 

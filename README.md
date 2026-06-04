@@ -5,7 +5,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-Marketing site for **Shrim Export** (agricultural exports) and **Shrim Linguistics** (Hindi & Marathi tutoring). Built with the Next.js App Router, static generation, and brand-aligned UI from client review mockups.
+Marketing site for **Shrim Export** (agricultural exports) and **Shrim Linguistics** (Hindi & Marathi tutoring). Built with the Next.js App Router, static pages, and brand-aligned UI from client review mockups.
 
 **Live:** [shrim-exports-website.vercel.app](https://shrim-exports-website.vercel.app)
 
@@ -18,6 +18,7 @@ Marketing site for **Shrim Export** (agricultural exports) and **Shrim Linguisti
 | **Exports** | Product catalogue, quote inquiry, farm-direct positioning |
 | **Linguistics** | Language tutoring for NRIs & residents |
 | **Contact** | About page with dual forms; phones open WhatsApp |
+| **Inquiries** | Forms auto-email via Gmail SMTP to the business inbox |
 | **Brand** | Heritage green, gold accents, optimized imagery |
 
 ---
@@ -26,14 +27,42 @@ Marketing site for **Shrim Export** (agricultural exports) and **Shrim Linguisti
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Hero, founder strip, star products (first 3 catalogue items), markets |
-| `/product-catalogue` | Full product grid with specs |
+| `/` | Hero (catalogue + get quote CTAs), founder strip, star products, markets |
+| `/product-catalogue` | Full product grid; **SELECT PACKAGING** → `/quote` |
 | `/linguistics` | Tutoring offer, how-it-works |
 | `/about` | Linguistics / exports inquiry forms, founders |
 | `/quote` | Standalone export quote form |
 
 **Navigation:** Home · Export Product Catalogue · Linguistics · About  
 **Mobile:** Hamburger menu with overlay (`app/components/Navbar.tsx`).
+
+---
+
+## Form submissions (Gmail)
+
+When a visitor submits a form:
+
+1. Browser `POST`s to `/api/inquiry`
+2. Server sends email via **Gmail SMTP** using the receiver account (`GMAIL_USER`)
+3. Message is delivered to **`INQUIRY_TO`** (default: `rameshwarijori@shrimexport.com`)
+4. **Reply-To** is set to the visitor’s email from the form
+
+```mermaid
+sequenceDiagram
+  participant User
+  participant Site
+  participant API as /api/inquiry
+  participant Gmail
+  participant Inbox as rameshwarijori@shrimexport.com
+
+  User->>Site: Submit form
+  Site->>API: POST type, email, fields
+  API->>Gmail: SMTP (GMAIL_USER)
+  Gmail->>Inbox: Inquiry email
+  Note over Inbox: Reply goes to visitor email
+```
+
+**Required before forms work in production:** a [Google App Password](https://myaccount.google.com/apppasswords) for `GMAIL_USER`. See [`TODO.md`](./TODO.md).
 
 ---
 
@@ -52,16 +81,22 @@ flowchart TB
   pages --> about[/about]
   pages --> quote[/quote]
 
-  about --> mailto[mailto inquiry - temporary]
+  about --> api[/api/inquiry]
+  quote --> api
+  api --> gmail[app/lib/gmail.ts]
   footer --> wa[WhatsApp via contact.ts]
-  home --> lib[app/lib/contact.ts]
 ```
 
-### Shared modules
+### Key modules
 
-- `app/lib/contact.ts` — Email, phone constants, `whatsAppUrl()`, star product list
-- `app/components/WhatsAppLink.tsx` — Reusable `wa.me` links
-- `app/components/Navbar.tsx` / `Footer.tsx` — Global chrome
+| Path | Role |
+|------|------|
+| `app/lib/contact.ts` | `CONTACT_EMAIL`, phones, `whatsAppUrl()`, star products |
+| `app/lib/inquiry-email.ts` | Subject/body/HTML builders for inquiry types |
+| `app/lib/gmail.ts` | Nodemailer + Gmail SMTP send |
+| `app/lib/submit-inquiry.ts` | Client `fetch` to `/api/inquiry` |
+| `app/components/InquiryFormFeedback.tsx` | Sending / success / error UI |
+| `app/components/WhatsAppLink.tsx` | `wa.me` links |
 
 ### Design tokens (`app/globals.css`)
 
@@ -70,39 +105,6 @@ flowchart TB
 | `--shrim-green` | Primary brand |
 | `--shrim-gold` | CTAs & accents |
 | `--shrim-blue` | Export form accents |
-
----
-
-## Recent changes (review pass)
-
-- Merged nav: **Export Product Catalogue** (header + footer aligned)
-- Removed home certifications section; star products match catalogue order
-- Hero gradient (opaque → transparent); italic emphasis on *shelves* / *roots* (no cursive)
-- Footer: contact beside logos, left-aligned copyright, [D'Mosh Global](https://dmoshglobal.com) credit
-- Site-wide WhatsApp on published phone numbers
-- About forms: uniform field heights; `mailto:` submit to `rameshwarijori@shrimexport.com` (server email deferred — see `TODO.md`)
-- Mobile hamburger navigation
-
----
-
-## Project structure
-
-```text
-export-landing-page/
-├── app/
-│   ├── about/
-│   ├── components/     # Navbar, Footer, WhatsAppLink
-│   ├── lib/              # contact.ts
-│   ├── linguistics/
-│   ├── product-catalogue/
-│   ├── quote/
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-├── public/images/
-├── TODO.md               # Deferred work
-└── README.md
-```
 
 ---
 
@@ -117,40 +119,81 @@ export-landing-page/
 
 ```bash
 npm install
+cp .env.example .env.local   # then fill GMAIL_APP_PASSWORD
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### Production
+### Environment variables
+
+Copy [`.env.example`](./.env.example) to `.env.local` (never commit `.env.local`):
+
+| Variable | Description |
+|----------|-------------|
+| `GMAIL_USER` | Gmail account that sends and receives inquiries (`rameshwarijori@shrimexport.com`) |
+| `GMAIL_APP_PASSWORD` | 16-character [App Password](https://myaccount.google.com/apppasswords) |
+| `INQUIRY_TO` | Optional inbox override (defaults to `GMAIL_USER`) |
+
+On **Vercel**, add the same variables under Project → Settings → Environment Variables, then redeploy.
+
+### Production build
 
 ```bash
 npm run build
 npm run start
 ```
 
-### Deploy
+### Test sample inquiries (local)
 
-Optimized for [Vercel](https://vercel.com). Push `main` to trigger deploy when the repo is connected.
+With `npm run dev` running and `.env.local` configured:
+
+```bash
+node scripts/send-inquiry-previews.mjs
+```
 
 ---
 
-## Environment & secrets
+## Project structure
 
-No required env vars for the current static + `mailto:` flow.
+```text
+export-landing-page/
+├── app/
+│   ├── api/inquiry/       # POST handler — Gmail send
+│   ├── about/
+│   ├── components/
+│   ├── lib/               # contact, gmail, inquiry-email, submit-inquiry
+│   ├── linguistics/
+│   ├── product-catalogue/
+│   ├── quote/
+│   └── page.tsx
+├── scripts/
+│   └── send-inquiry-previews.mjs
+├── public/images/
+├── .env.example
+├── TODO.md
+└── README.md
+```
 
-When server-side email is added (see `TODO.md`), use `.env.local` — never commit secrets. `.gitignore` already excludes `.env*`.
+---
+
+## Recent changes
+
+- Hero: **VIEW CATALOGUE** + **GET QUOTE** buttons
+- Catalogue **SELECT PACKAGING** → `/quote`
+- Forms: automatic Gmail delivery (no mailto popup, no Resend)
+- **Your Email** field on all inquiry forms; reply-to visitor
+- Mobile hamburger nav; WhatsApp on published numbers
+- Footer credit: [D'Mosh Global](https://dmoshglobal.com)
 
 ---
 
 ## Deferred work
 
-Track open items in [`TODO.md`](./TODO.md):
+See [`TODO.md`](./TODO.md):
 
-- Server-side form email (Resend or similar)
-- `/quote` form parity with About
-- `/#exports` content decision
-- Product catalogue “SELECT PACKAGING” behaviour
+- **Gmail App Password** — required for live form delivery
+- `/#exports` anchor / home section decision
 
 ---
 
@@ -162,6 +205,7 @@ Track open items in [`TODO.md`](./TODO.md):
 | `npm run build` | Production build |
 | `npm run start` | Run production build |
 | `npm run lint` | ESLint |
+| `node scripts/send-inquiry-previews.mjs` | Send sample inquiries (dev) |
 
 ---
 
