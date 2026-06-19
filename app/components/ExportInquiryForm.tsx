@@ -42,7 +42,7 @@ export default function ExportInquiryForm({ onSubmit, status }: ExportInquiryFor
             type="text"
             name="name"
             required
-            placeholder="Raghav Raj Sobti"
+            placeholder="Enter your name"
             className={formFieldClass}
           />
         </div>

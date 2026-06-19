@@ -142,7 +142,7 @@ export default function About() {
                     type="text"
                     name="name"
                     required
-                    placeholder="Raghav Raj Sobti"
+                    placeholder="Enter your name"
                     className={formFieldClass}
                   />
                 </div>

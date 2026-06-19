@@ -46,10 +46,10 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/images/Asset 6@5x-8.png"
+                src="/images/shrim-logo-icon.png"
                 alt="Shrim Export Logo"
-                width={160}
-                height={64}
+                width={56}
+                height={56}
                 className="h-14 w-auto"
                 priority
               />

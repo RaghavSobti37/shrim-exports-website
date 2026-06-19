@@ -39,9 +39,9 @@ export default function Home() {
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white max-w-4xl leading-tight tracking-tight uppercase">
-            FROM INDIAN SOIL TO YOUR <span className="text-shrim-gold">SHELVES</span>,
+            FROM INDIAN SOIL TO YOUR <span className="text-shrim-gold italic">SHELVES</span>,
             <br />
-            FROM OUR <span className="text-shrim-gold">ROOTS</span> TO YOUR HOMES.
+            FROM OUR <span className="text-shrim-gold italic">ROOTS</span> TO YOUR HOMES.
           </h1>
           <p className="mt-6 text-lg md:text-xl text-gray-200 font-medium tracking-wide">
             Farm Direct Sourcing | Full Batch Traceability
