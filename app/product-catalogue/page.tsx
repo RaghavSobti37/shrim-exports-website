@@ -63,13 +63,13 @@ export default function ProductCatalogue() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-8">
+      <section className="pt-6 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-0">
         <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-4 uppercase">OUR PRODUCTS</h1>
         <p className="text-gray-600 max-w-3xl mb-8 text-sm leading-relaxed">
           Every shipment from Shrim Export carries the weight of regulatory verification not as a formality, but as a non-negotiable standard. Here is what we hold, and what it means for you.
         </p>
 
-        <div className="flex items-center justify-between gap-4 mb-16 border-b border-gray-100 pb-6">
+        <div className="flex items-center gap-4 flex-wrap mb-16 border-b border-gray-100 pb-6">
           <span className="text-shrim-green font-black text-sm tracking-wider uppercase">Customized packaging available!</span>
           <Link href="/quote" className="px-6 py-2 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow transition-colors text-xs tracking-wider uppercase">
             SELECT PACKAGING

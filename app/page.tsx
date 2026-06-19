@@ -39,9 +39,9 @@ export default function Home() {
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white max-w-4xl leading-tight tracking-tight uppercase">
-            FROM INDIAN SOIL TO YOUR <span className="text-shrim-gold italic lowercase">shelves</span>,
+            FROM INDIAN SOIL TO YOUR <span className="text-shrim-gold">SHELVES</span>,
             <br />
-            FROM OUR <span className="text-shrim-gold italic lowercase">roots</span> TO YOUR HOMES.
+            FROM OUR <span className="text-shrim-gold">ROOTS</span> TO YOUR HOMES.
           </h1>
           <p className="mt-6 text-lg md:text-xl text-gray-200 font-medium tracking-wide">
             Farm Direct Sourcing | Full Batch Traceability
@@ -106,7 +106,11 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {STAR_PRODUCTS.map((product) => (
-              <div key={product.title} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+              <Link
+                key={product.title}
+                href="/product-catalogue"
+                className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+              >
                 <h3 className="text-shrim-green font-black text-lg mb-6 uppercase tracking-wider">{product.title}</h3>
                 <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-md">
                   <Image 
@@ -116,7 +120,7 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

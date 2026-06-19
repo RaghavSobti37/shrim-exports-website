@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import Image from 'next/image';
 import WhatsAppLink from '../components/WhatsAppLink';
+import ExportInquiryForm from '../components/ExportInquiryForm';
 import { CONTACT_EMAIL, PHONE_MILIND, PHONE_RAMESHWARI } from '../lib/contact';
 import InquiryFormFeedback from '../components/InquiryFormFeedback';
 import { submitInquiry } from '../lib/submit-inquiry';
@@ -15,6 +16,13 @@ export default function About() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [successInbox, setSuccessInbox] = useState('');
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('tab') === 'exports') {
+      setFormType('exports');
+    }
+  }, []);
 
   const formDataFrom = (data: FormData) =>
     Object.fromEntries(
@@ -66,7 +74,7 @@ export default function About() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Dynamic Support Form Section */}
-      <section id="support" className="py-20 bg-gray-50 border-b border-gray-100 mt-8">
+      <section id="support" className="pt-6 pb-16 bg-gray-50 border-b border-gray-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 md:p-12 shadow-sm rounded-2xl border border-gray-100">
           <h2 className="text-3xl font-black text-shrim-green text-center mb-6 uppercase tracking-wider">
             HOW CAN WE SUPPORT YOU?
@@ -229,140 +237,7 @@ export default function About() {
               </div>
             </form>
           ) : (
-            /* Exports Quote Form */
-            <form className="space-y-6" onSubmit={handleExportsSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                    Product *
-                  </label>
-                  <select name="product" required className={`${formFieldClass} bg-white focus:border-shrim-blue`}>
-                    <option>Fresh Onion (Red/White)</option>
-                    <option>G4 Green Chilli</option>
-                    <option>Cavendish Banana</option>
-                    <option>Fresh Pomegranate</option>
-                    <option>Frozen Vegetables</option>
-                    <option>Dehydrated Vegetables</option>
-                    <option>Fresh Turmeric</option>
-                    <option>Semi Husk Coconut</option>
-                    <option>Millet Cookies</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Raghav Raj Sobti"
-                    className={`${formFieldClass} focus:border-shrim-blue`}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                    Your Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    autoComplete="email"
-                    placeholder="you@example.com"
-                    className={`${formFieldClass} focus:border-shrim-blue`}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                    Company Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    required
-                    placeholder="Global Trading Corp"
-                    className={`${formFieldClass} focus:border-shrim-blue`}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                    Country *
-                  </label>
-                  <input
-                    type="text"
-                    name="country"
-                    required
-                    placeholder="Netherlands"
-                    className={`${formFieldClass} focus:border-shrim-blue`}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                    Mention Product Requirement *
-                  </label>
-                  <select name="productRequirement" required className={`${formFieldClass} bg-white focus:border-shrim-blue`}>
-                    <option>Fresh / Raw Product</option>
-                    <option>IQF Frozen Grade</option>
-                    <option>Dehydrated (Flakes/Granules/Powder)</option>
-                    <option>Processed / Finished Goods</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                    Quantity Needed *
-                  </label>
-                  <input
-                    type="text"
-                    name="quantity"
-                    required
-                    placeholder="e.g. 15 Metric Tons / 1x40ft Container"
-                    className={`${formFieldClass} focus:border-shrim-blue`}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                  Preferred Packaging *
-                </label>
-                <select name="packaging" required className={`${formFieldClass} bg-white focus:border-shrim-blue`}>
-                  <option>PP Mesh Bags (25kg / 50kg)</option>
-                  <option>Corrugated Carton Boxes</option>
-                  <option>Bulk Bags / Palletized</option>
-                  <option>Retail Customized Packaging</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-black text-gray-700 uppercase tracking-widest mb-2">
-                  Anything Else We Should Know *
-                </label>
-                <textarea
-                  name="notes"
-                  rows={4}
-                  required
-                  placeholder="Specific certifications required, port of destination, target delivery schedule, or payment terms..."
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-shrim-blue text-sm font-semibold text-gray-700"
-                />
-              </div>
-
-              <div className="flex justify-center pt-4">
-                <button
-                  type="submit"
-                  disabled={status === 'sending'}
-                  className="px-10 py-3.5 bg-shrim-blue hover:bg-shrim-blue-light text-white font-black rounded-lg shadow-lg transition-colors text-sm uppercase tracking-widest disabled:opacity-60"
-                >
-                  {status === 'sending' ? 'Sending…' : 'Send Inquiry'}
-                </button>
-              </div>
-            </form>
+            <ExportInquiryForm onSubmit={handleExportsSubmit} status={status} />
           )}
         </div>
       </section>

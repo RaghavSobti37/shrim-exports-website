@@ -48,9 +48,9 @@ export default function Navbar() {
               <Image
                 src="/images/Asset 6@5x-8.png"
                 alt="Shrim Export Logo"
-                width={120}
-                height={50}
-                className="h-10 w-auto"
+                width={160}
+                height={64}
+                className="h-14 w-auto"
                 priority
               />
             </Link>

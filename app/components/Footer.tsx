@@ -15,9 +15,9 @@ export default function Footer() {
               <Image
                 src="/images/Asset 14@10x-8.png"
                 alt="Shrim Export Logo"
-                width={120}
-                height={50}
-                className="h-10 w-auto object-contain brightness-110 shrink-0"
+                width={160}
+                height={64}
+                className="h-14 w-auto object-contain brightness-110 shrink-0"
               />
               <div>
                 <p className="text-sm text-gray-300 font-normal">Milind Madhukar Jori -</p>
@@ -35,9 +35,9 @@ export default function Footer() {
               <Image
                 src="/images/Asset 15@10x-8.png"
                 alt="Shrim Linguistics Logo"
-                width={120}
-                height={50}
-                className="h-10 w-auto object-contain brightness-110 shrink-0"
+                width={160}
+                height={64}
+                className="h-14 w-auto object-contain brightness-110 shrink-0"
               />
               <div>
                 <p className="text-sm text-gray-300 font-normal">Rameshwari Milind Jori -</p>
@@ -73,7 +73,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <p>Flat No. 101, Ketkar Heights, Joshi Nagar, Kopargaon, Dist: Ahilyanagar, Maharashtra, India.</p>
+                <p>Flat No. 101, Kotkar Heights, Joshi Nagar, Kopargaon, Dist: Ahilyanagar, Maharashtra, India.</p>
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-400 font-semibold">
                 <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,9 +95,9 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-          <p className="text-left text-xs text-gray-500 font-semibold tracking-wider">Shrim All Rights Reserved</p>
+          <p className="text-left text-xs text-gray-500 font-semibold tracking-wider">Shrim Export All Rights Reserved</p>
           <p className="text-left sm:text-right text-xs text-gray-500 font-semibold tracking-wider">
-            developed by{' '}
+            Developed by{' '}
             <a
               href="https://dmoshglobal.com"
               target="_blank"
