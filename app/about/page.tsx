@@ -79,28 +79,26 @@ export default function About() {
           <h2 className="text-3xl font-black text-shrim-green text-center mb-6 uppercase tracking-wider">
             HOW CAN WE SUPPORT YOU?
           </h2>
-          
+
           {/* Tab Selector Buttons */}
           <div className="flex justify-center gap-4 mb-10">
             <button
               type="button"
               onClick={() => switchForm('linguistics')}
-              className={`px-6 py-3 rounded-lg font-black text-sm uppercase tracking-wider transition-all duration-300 shadow ${
-                formType === 'linguistics'
-                  ? 'bg-shrim-green text-white shadow-md'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
+              className={`px-6 py-3 rounded-lg font-black text-sm uppercase tracking-wider transition-all duration-300 shadow ${formType === 'linguistics'
+                ? 'bg-shrim-green text-white shadow-md'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
             >
               Linguistics
             </button>
             <button
               type="button"
               onClick={() => switchForm('exports')}
-              className={`px-6 py-3 rounded-lg font-black text-sm uppercase tracking-wider transition-all duration-300 shadow ${
-                formType === 'exports'
-                  ? 'bg-shrim-green text-white shadow-md'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
+              className={`px-6 py-3 rounded-lg font-black text-sm uppercase tracking-wider transition-all duration-300 shadow ${formType === 'exports'
+                ? 'bg-shrim-green text-white shadow-md'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
             >
               Exports
             </button>
@@ -254,7 +252,7 @@ export default function About() {
             <div className="flex flex-col items-center bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
               <div className="relative w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-shrim-gold/30 shadow-md">
                 <Image
-                  src="/images/milind_jori.jpg"
+                  src="/images/milind_jori.jpeg"
                   alt="Milind Madhukar Jori"
                   fill
                   className="object-cover"
@@ -289,10 +287,10 @@ export default function About() {
             <div className="flex flex-col items-center bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
               <div className="relative w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-shrim-gold/30 shadow-md">
                 <Image
-                  src="/images/rameshwari_jori.jpg"
+                  src="/images/rameshwari_jori.jpeg"
                   alt="Rameshwari Milind Jori"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
               <h3 className="text-xl font-black text-gray-900 mb-1 uppercase tracking-wide">
