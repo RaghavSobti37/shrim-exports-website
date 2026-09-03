@@ -7,15 +7,22 @@ import { useState, useEffect } from 'react';
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'Export Product Catalogue', path: '/product-catalogue' },
+  { name: 'Export Products', path: '/product-catalogue' },
   { name: 'Linguistics', path: '/linguistics' },
-  { name: 'About', path: '/about' },
+  { name: 'About Us', path: '/about' },
+  { name: 'Contact / Request a Quote', path: '/contact' },
 ];
+
+function linkActive(pathname: string, path: string) {
+  if (path === '/') return pathname === '/';
+  if (path === '/contact') return pathname === '/contact' || pathname === '/quote';
+  return pathname === path || pathname.startsWith(`${path}/`);
+}
 
 function linkClass(isActive: boolean, mobile = false) {
   const base = mobile
     ? 'block px-4 py-3 text-base font-bold tracking-wide transition-colors border-l-[3px]'
-    : 'inline-flex items-center text-sm font-bold tracking-wide transition-colors h-full border-b-[3px]';
+    : 'inline-flex items-center text-xs lg:text-sm font-bold tracking-wide transition-colors h-full border-b-[3px] whitespace-nowrap';
 
   return `${base} ${
     isActive
@@ -56,23 +63,18 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop */}
-          <div className="hidden md:flex space-x-8 h-full items-center">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.path;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.path}
-                  className={linkClass(isActive)}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
+          <div className="hidden md:flex space-x-5 lg:space-x-8 h-full items-center">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.path}
+                className={linkClass(linkActive(pathname, link.path))}
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
             className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-shrim-green hover:bg-gray-100 transition-colors"
@@ -94,7 +96,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu panel */}
       {menuOpen && (
         <>
           <button
@@ -108,19 +109,16 @@ export default function Navbar() {
             className="md:hidden absolute left-0 right-0 top-full bg-white border-b border-gray-100 shadow-lg z-50"
           >
             <div className="py-2">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.path;
-                return (
-                  <Link
-                    key={link.name}
-                    href={link.path}
-                    className={linkClass(isActive, true)}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.path}
+                  className={linkClass(linkActive(pathname, link.path), true)}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
           </div>
         </>

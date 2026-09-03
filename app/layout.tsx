@@ -10,8 +10,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Shrim Export",
-  description: "From Indian soil to your shelves, from our roots to your homes.",
+  title: {
+    default: 'Shrim Export',
+    template: '%s | Shrim Export',
+  },
+  description:
+    'Connecting international buyers with carefully sourced agricultural products from India — quality, transparency and buyer-specific requirements.',
 };
 
 export default function RootLayout({

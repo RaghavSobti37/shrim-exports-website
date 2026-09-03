@@ -81,12 +81,25 @@ export async function POST(request: Request) {
       name: str('name'),
       company: str('company'),
       country: str('country'),
-      productRequirement: str('productRequirement'),
+      phone: str('phone'),
       quantity: str('quantity'),
+      specification: str('specification'),
       packaging: str('packaging'),
+      destinationCountry: str('destinationCountry'),
+      destinationPort: str('destinationPort'),
+      incoterm: str('incoterm'),
+      deliveryDate: str('deliveryDate'),
       notes: str('notes'),
     };
-    if (!inquiry.name || !inquiry.product) {
+    if (
+      !inquiry.name ||
+      !inquiry.company ||
+      !inquiry.product ||
+      !inquiry.quantity ||
+      !inquiry.country ||
+      !inquiry.phone ||
+      !inquiry.destinationCountry
+    ) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
     const built = exportInquiryEmail(inquiry);

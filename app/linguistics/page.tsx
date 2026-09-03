@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import WhatsAppLink from '../components/WhatsAppLink';
+import LinguisticsInquiryForm from '../components/LinguisticsInquiryForm';
 import { PHONE_RAMESHWARI } from '../lib/contact';
+
+export const metadata = {
+  title: 'Linguistics',
+  description: 'Hindi and Marathi language tutoring for NRIs and residents.',
+};
 
 export default function Linguistics() {
   return (
@@ -102,7 +108,7 @@ export default function Linguistics() {
 
           {/* CTA Area */}
           <div className="mt-20 text-center max-w-3xl mx-auto">
-            <Link href="/about#support" className="px-8 py-3.5 bg-shrim-gold hover:bg-shrim-gold-light text-white font-black rounded-lg shadow-lg transition-colors text-sm uppercase tracking-wider inline-block mb-8">
+            <Link href="#support" className="px-8 py-3.5 bg-shrim-gold hover:bg-shrim-gold-light text-white font-black rounded-lg shadow-lg transition-colors text-sm uppercase tracking-wider inline-block mb-8">
               BOOK A TRIAL SESSION
             </Link>
             <h3 className="text-2xl font-black text-gray-900 mb-4 uppercase tracking-wide">
@@ -145,6 +151,19 @@ export default function Linguistics() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 md:p-12 shadow-sm rounded-2xl border border-gray-100">
+          <h2 className="text-3xl font-black text-shrim-green text-center mb-4 uppercase tracking-wider">
+            Book a trial session
+          </h2>
+          <p className="text-gray-500 text-center text-sm mb-10 max-w-lg mx-auto font-medium">
+            Please fill out the form below for language tutoring inquiries. We will get back to you with
+            session details and schedules.
+          </p>
+          <LinguisticsInquiryForm />
         </div>
       </section>
     </div>

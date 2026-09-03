@@ -22,9 +22,14 @@ export type ExportInquiry = {
   name: string;
   company: string;
   country: string;
-  productRequirement: string;
+  phone: string;
   quantity: string;
+  specification: string;
   packaging: string;
+  destinationCountry: string;
+  destinationPort: string;
+  incoterm: string;
+  deliveryDate: string;
   notes: string;
 };
 
@@ -46,15 +51,20 @@ export function linguisticsInquiryLines(data: LinguisticsInquiry): string[] {
 
 export function exportInquiryLines(data: ExportInquiry): string[] {
   return [
-    `Email: ${data.email}`,
-    `Product: ${data.product}`,
     `Name: ${data.name}`,
     `Company: ${data.company}`,
+    `Business Email: ${data.email}`,
     `Country: ${data.country}`,
-    `Product Requirement: ${data.productRequirement}`,
+    `Phone / WhatsApp: ${data.phone}`,
+    `Product: ${data.product}`,
     `Quantity: ${data.quantity}`,
-    `Packaging: ${data.packaging}`,
-    `Notes: ${data.notes}`,
+    `Specification: ${data.specification || '—'}`,
+    `Packaging: ${data.packaging || '—'}`,
+    `Destination Country: ${data.destinationCountry}`,
+    `Destination Port: ${data.destinationPort || '—'}`,
+    `Preferred Incoterm: ${data.incoterm || '—'}`,
+    `Required Delivery Date: ${data.deliveryDate || '—'}`,
+    `Additional Information: ${data.notes || '—'}`,
   ];
 }
 
@@ -124,7 +134,6 @@ export function exportInquiryEmail(data: ExportInquiry) {
   };
 }
 
-/** Sample payloads for preview / test sends (test-values skill) */
 export const SAMPLE_LINGUISTICS: LinguisticsInquiry = {
   email: TEST_EMAIL_PERSONAL,
   service: 'Marathi Tutoring',
@@ -138,17 +147,21 @@ export const SAMPLE_LINGUISTICS: LinguisticsInquiry = {
 
 export const SAMPLE_EXPORT: ExportInquiry = {
   email: TEST_EMAIL_PERSONAL,
-  product: 'Fresh Onion (Red/White)',
+  product: 'Fresh Onion',
   name: TEST_FULL_NAME,
   company: 'Sobti Trading (test preview)',
   country: 'India',
-  productRequirement: 'Fresh / Raw Product',
-  quantity: '15 Metric Tons / 1x40ft container',
-  packaging: 'PP Mesh Bags (25kg / 50kg)',
-  notes: `Test inquiry. Contact: ${TEST_EMAIL_PERSONAL}, ${TEST_PHONE_DISPLAY}. Please include CIF quote and phytosanitary documentation timeline.`,
+  phone: TEST_PHONE_DISPLAY,
+  quantity: '10 MT / 1 container',
+  specification: 'Red onion, 50–70mm',
+  packaging: 'Bulk',
+  destinationCountry: 'Netherlands',
+  destinationPort: 'Rotterdam',
+  incoterm: 'CIF',
+  deliveryDate: '2026-11-01',
+  notes: `Test inquiry. Contact: ${TEST_EMAIL_PERSONAL}, ${TEST_PHONE_DISPLAY}.`,
 };
 
-/** mailto preview — same recipient + subject as live form submit */
 export function linguisticsPreviewMailto(recipient: string = CONTACT_EMAIL) {
   const { subject, text } = linguisticsInquiryEmail(SAMPLE_LINGUISTICS);
   return buildInquiryMailtoUrl(recipient, subject, text.split('\n'));

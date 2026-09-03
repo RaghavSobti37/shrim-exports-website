@@ -1,86 +1,43 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { CATALOG_PRODUCTS } from '../lib/products';
+
+export const metadata = {
+  title: 'Export Products',
+  description:
+    'Explore Shrim Export’s range of fresh and processed agricultural products sourced from India.',
+};
 
 export default function ProductCatalogue() {
-  const catalogProducts = [
-    {
-      id: 1,
-      title: "G4 Green Chilli",
-      description: ["Colour: Deep Green", "Size: 6cm to 10cm", "Pungency: Medium to High", "Shelf Life: 10 to 15 Days", "Origin: India"],
-      moq: "",
-      image: "/images/chilly.jpeg"
-    },
-    {
-      id: 2,
-      title: "Fresh Onion",
-      description: ["Colour: Red/ White", "Size: 40mm to 70mm +", "Shelf Life: 20 to 30 Days", "Origin: India"],
-      moq: "",
-      image: "/images/onions.jpeg"
-    },
-    {
-      id: 3,
-      title: "Cavendish Banana",
-      description: ["Variety: G9 Cavendish Banana", "Colour: Green (Unripe)", "Length: 18 to 25 cm", "Finger Count: 5 to 7 per hand", "Shelf Life: 15 to 25 Days", "Origin: India."],
-      moq: "",
-      image: "/images/bananas.jpeg"
-    },
-    {
-      id: 4,
-      title: "Fresh Pomegranate",
-      description: ["Variety: Bhagwa / Ganesh", "Colour: Deep Red", "Size: 200g to 400g per fruit", "Taste: Sweet", "Shelf Life: 20 to 30 Days", "Origin: India."],
-      moq: "",
-      image: "/images/Pomogranet.jpeg"
-    },
-    {
-      id: 5,
-      title: "Frozen Vegetables",
-      description: ["Processing: IQF - (Individually Quick Frozen)", "Temperature: 18°C or below", "Shelf Life: 12 to 24 Months", "Packaging: Bulk / Retail Packs", "Quality: Export Grade", "Origin: India."],
-      moq: "",
-      image: "/images/frozen_veggies.jpeg"
-    },
-    {
-      id: 6,
-      title: "Dehydrated Vegetables",
-      description: ["Form: Flakes / Powder / Granules", "Moisture: < 6%", "Color: Natural", "Shelf Life: 12 – 24 Months", "Processing: Air-dried / Dehydrated", "Origin: India."],
-      moq: "",
-      image: "/images/spices.jpeg"
-    },
-    {
-      id: 7,
-      title: "Fresh Turmeric",
-      description: ["Product: Fresh Turmeric (Raw Haldi)", "Colour: Yellow / Orange", "Variety: Salem/ Rajapuri", "Size: Medium to Large Fingers", "Curcumin: 3% – 5% (Approx.)", "Shelf Life: 20 – 30 Days", "Origin: India."],
-      moq: "",
-      image: "/images/Tumeric_fingers.jpeg"
-    },
-    {
-      id: 8,
-      title: "Semi Husk Coconut",
-      description: ["Color: Brown", "Weight: 500g – 700g / 650g+ / 800g+ (as per buyer requirement)", "Shelf Life: 45–60 days", "Packing: 13kg / 25kg PP bags or mesh bags", "Loading: 40ft container"],
-      moq: "",
-      image: "/images/Coconut.jpeg"
-    }
-  ];
-
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <section className="pt-6 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-0">
-        <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-4 uppercase">OUR PRODUCTS</h1>
-        <p className="text-gray-600 max-w-3xl mb-8 text-sm leading-relaxed">
-          Every shipment from Shrim Export carries the weight of regulatory verification not as a formality, but as a non-negotiable standard. Here is what we hold, and what it means for you.
+      <section className="pt-10 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4 uppercase">
+          Our products
+        </h1>
+        <p className="text-gray-600 max-w-3xl mb-8 text-sm md:text-base leading-relaxed">
+          Explore our range of fresh and processed agricultural products sourced from India.
         </p>
 
         <div className="flex items-center gap-4 flex-wrap mb-16 border-b border-gray-100 pb-6">
-          <span className="text-shrim-green font-black text-sm tracking-wider uppercase">Customized packaging available!</span>
-          <Link href="/quote" className="px-6 py-2 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow transition-colors text-xs tracking-wider uppercase">
-            SELECT PACKAGING
+          <span className="text-shrim-green font-black text-sm tracking-wider uppercase">
+            Customized packaging available
+          </span>
+          <Link
+            href="/contact"
+            className="px-6 py-2 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow transition-colors text-xs tracking-wider uppercase"
+          >
+            Select packaging
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-          {catalogProducts.map((product) => (
+          {CATALOG_PRODUCTS.map((product) => (
             <div key={product.id} className="flex flex-col justify-between h-full bg-white p-2">
               <div>
-                <h3 className="text-shrim-green font-black text-lg mb-4 uppercase tracking-wider">{product.title}</h3>
+                <h3 className="text-shrim-green font-black text-lg mb-4 uppercase tracking-wider">
+                  {product.title}
+                </h3>
                 <div className="text-xs text-gray-500 mb-6 space-y-1.5 font-sans uppercase tracking-wider font-semibold">
                   {product.description.map((desc, idx) => {
                     const colonIndex = desc.indexOf(':');
@@ -95,29 +52,41 @@ export default function ProductCatalogue() {
                       );
                     }
                     return (
-                      <p key={idx} className="text-xs text-gray-500">{desc}</p>
+                      <p key={idx} className="text-xs text-gray-500">
+                        {desc}
+                      </p>
                     );
                   })}
-                  {product.moq && (
-                    <p className="mt-3 text-shrim-gold font-bold">{product.moq}</p>
-                  )}
                 </div>
               </div>
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
-                <Image 
-                  src={product.image}
-                  alt={product.title}
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+                <Image src={product.image} alt={product.title} fill className="object-cover" />
               </div>
+              <Link
+                href={`/contact?product=${encodeURIComponent(product.title)}`}
+                className="mt-4 inline-flex justify-center px-4 py-2.5 bg-shrim-green hover:bg-shrim-green-light text-white font-bold rounded text-xs uppercase tracking-wider"
+              >
+                Request this product
+              </Link>
             </div>
           ))}
         </div>
+      </section>
 
-        <div className="mt-20 flex justify-center border-t border-gray-100 pt-12">
-          <Link href="/quote" className="px-10 py-4 bg-shrim-gold hover:bg-shrim-gold-light text-white font-black rounded-lg shadow-lg transition-colors tracking-widest text-sm uppercase">
-            GET QUOTE
+      <section className="bg-shrim-green text-white py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-black uppercase tracking-tight">
+            Don&apos;t see what you&apos;re looking for?
+          </h2>
+          <p className="mt-4 text-gray-200 text-sm leading-relaxed">
+            Tell us your requirement. We may be able to source additional products based on quantity, season
+            and destination.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-8 inline-flex px-8 py-3.5 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow-lg text-sm uppercase tracking-wider"
+          >
+            Send an enquiry →
           </Link>
         </div>
       </section>

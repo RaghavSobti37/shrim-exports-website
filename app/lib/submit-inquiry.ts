@@ -1,5 +1,11 @@
 export type InquiryType = 'linguistics' | 'export';
 
+export function formDataToRecord(data: FormData): Record<string, string> {
+  return Object.fromEntries(
+    [...data.entries()].map(([key, value]) => [key, String(value)])
+  );
+}
+
 export async function submitInquiry(
   type: InquiryType,
   email: string,
