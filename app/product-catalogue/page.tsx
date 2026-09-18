@@ -1,16 +1,29 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { CATALOG_PRODUCTS } from '../lib/products';
+import { breadcrumbJsonLd, pageMetadata, productCatalogJsonLd } from '../lib/seo';
+import JsonLd from '../components/JsonLd';
 
-export const metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Export Products',
   description:
-    'Explore Shrim Export’s range of fresh and processed agricultural products sourced from India.',
-};
+    'Explore Shrim Export’s range of fresh and processed agricultural products sourced from India for international buyers.',
+  path: '/product-catalogue',
+});
 
 export default function ProductCatalogue() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Export Products', path: '/product-catalogue' },
+          ]),
+          productCatalogJsonLd(),
+        ]}
+      />
       <section className="pt-10 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4 uppercase">
           Our products

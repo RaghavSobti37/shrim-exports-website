@@ -1,5 +1,8 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LEGAL_PAGES, LEGAL_SLUGS, type LegalSlug } from '../../lib/legal';
+import { breadcrumbJsonLd, pageMetadata } from '../../lib/seo';
+import JsonLd from '../../components/JsonLd';
 
 type Params = Promise<{ slug: string }>;
 
@@ -7,10 +10,17 @@ export function generateStaticParams() {
   return LEGAL_SLUGS.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
   const page = LEGAL_PAGES[slug as LegalSlug];
-  return { title: page?.title ?? 'Legal' };
+  if (!page) {
+    return { title: 'Legal' };
+  }
+  return pageMetadata({
+    title: page.title,
+    description: `${page.title} for Shrim Export. Last updated ${page.updated}.`,
+    path: `/legal/${slug}`,
+  });
 }
 
 function Paragraphs({ text }: { text: string[] }) {
@@ -32,6 +42,12 @@ export default async function LegalPage({ params }: { params: Params }) {
 
   return (
     <div className="bg-white min-h-screen">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: page.title, path: `/legal/${slug}` },
+        ])}
+      />
       <section className="bg-shrim-green text-white py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tight">{page.title}</h1>

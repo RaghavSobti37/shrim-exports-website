@@ -39,6 +39,11 @@ export default function Footer() {
                   Shrim Linguistics
                 </Link>
               </li>
+              <li>
+                <Link href="/site-map" className="text-gray-400 hover:text-white transition-colors">
+                  Site Map
+                </Link>
+              </li>
             </ul>
           </div>
 

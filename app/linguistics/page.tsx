@@ -1,17 +1,28 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import WhatsAppLink from '../components/WhatsAppLink';
 import LinguisticsInquiryForm from '../components/LinguisticsInquiryForm';
+import JsonLd from '../components/JsonLd';
 import { PHONE_RAMESHWARI } from '../lib/contact';
+import { breadcrumbJsonLd, pageMetadata } from '../lib/seo';
 
-export const metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Linguistics',
-  description: 'Hindi and Marathi language tutoring for NRIs and residents.',
-};
+  description:
+    'Hindi and Marathi language tutoring for NRIs and residents from Shrim Linguistics — keep your roots and language alive.',
+  path: '/linguistics',
+});
 
 export default function Linguistics() {
   return (
     <div className="flex flex-col min-h-screen">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Linguistics', path: '/linguistics' },
+        ])}
+      />
       {/* Hero Section */}
       <section className="relative w-full min-h-[65vh] flex flex-col justify-center overflow-hidden bg-shrim-green">
         {/* Background Overlay Split */}

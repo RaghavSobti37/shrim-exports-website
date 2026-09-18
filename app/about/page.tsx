@@ -1,14 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import WhatsAppLink from '../components/WhatsAppLink';
+import JsonLd from '../components/JsonLd';
 import ExportsTabRedirect from './ExportsTabRedirect';
 import { CONTACT_EMAIL, PHONE_MILIND, PHONE_RAMESHWARI } from '../lib/contact';
+import { breadcrumbJsonLd, pageMetadata } from '../lib/seo';
 
-export const metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'About Us',
   description:
     'Shrim Export connects Indian agricultural producers with international buyers through transparent sourcing, clear specifications and dependable communication.',
-};
+  path: '/about',
+});
 
 const beliefs = [
   'Sourcing should be transparent.',
@@ -20,6 +24,12 @@ const beliefs = [
 export default function About() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'About Us', path: '/about' },
+        ])}
+      />
       <ExportsTabRedirect />
       <section className="relative bg-shrim-green text-white py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-shrim-green via-shrim-green/90 to-shrim-green-light/80" />

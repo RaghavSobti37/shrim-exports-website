@@ -1,8 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import WhatsAppLink from './components/WhatsAppLink';
+import JsonLd from './components/JsonLd';
 import { PHONE_MILIND, WHATSAPP_EXPORT_TEXT } from './lib/contact';
 import { FEATURED_PRODUCTS } from './lib/products';
+import { faqJsonLd, pageMetadata, SITE_FAQS } from './lib/seo';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Home',
+  description:
+    'Shrim Export connects international buyers with carefully sourced agricultural products from India — quality, transparency and buyer-specific requirements.',
+  path: '/',
+});
 
 const goldBtn =
   'inline-flex items-center justify-center px-8 py-3.5 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow-lg transition-colors text-sm uppercase tracking-wider';
@@ -175,6 +185,7 @@ const markets = [
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <JsonLd data={faqJsonLd()} />
       <section className="relative w-full min-h-[80vh] flex flex-col justify-center bg-shrim-green overflow-hidden">
         <div
           className="absolute inset-0 mix-blend-overlay"
@@ -459,6 +470,30 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white" aria-labelledby="faq-heading">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            id="faq-heading"
+            className="text-3xl font-black text-gray-900 tracking-tight mb-4 uppercase text-center"
+          >
+            Common questions
+          </h2>
+          <p className="text-gray-600 text-sm leading-relaxed text-center mb-12">
+            Direct answers for buyers evaluating Shrim Export as an Indian agricultural sourcing partner.
+          </p>
+          <dl className="space-y-8">
+            {SITE_FAQS.map((faq) => (
+              <div key={faq.question}>
+                <dt className="text-shrim-green font-black text-sm uppercase tracking-wider">
+                  {faq.question}
+                </dt>
+                <dd className="mt-2 text-gray-600 text-sm md:text-base leading-relaxed">{faq.answer}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

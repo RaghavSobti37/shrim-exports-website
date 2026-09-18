@@ -1,14 +1,24 @@
+import type { Metadata } from 'next';
 import ExportInquiryForm from '../components/ExportInquiryForm';
+import JsonLd from '../components/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '../lib/seo';
 
-export const metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Request a Quote',
   description:
     'Share your agricultural sourcing requirement with Shrim Export — product, quantity, specification and destination.',
-};
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Request a Quote', path: '/contact' },
+        ])}
+      />
       <section className="bg-shrim-green text-white py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight leading-tight">

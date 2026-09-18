@@ -1,0 +1,43 @@
+# Shrim Export
+
+> Shrim Export connects international buyers with carefully sourced agricultural products from India — quality, transparency and buyer-specific requirements.
+
+## Site
+
+- Home: https://shrim-exports-website.vercel.app/
+- Export Products: https://shrim-exports-website.vercel.app/product-catalogue
+- About: https://shrim-exports-website.vercel.app/about
+- Request a Quote: https://shrim-exports-website.vercel.app/contact
+- Linguistics: https://shrim-exports-website.vercel.app/linguistics
+- Site Map: https://shrim-exports-website.vercel.app/site-map
+- XML Sitemap: https://shrim-exports-website.vercel.app/sitemap.xml
+
+## Company
+
+- Name: Shrim Export
+- Location: Flat No. 101, Kotkar Heights, Joshi Nagar, Kopargaon, Dist. Ahilyanagar, Maharashtra, India
+- Email: rameshwarijori@shrimexport.com
+- WhatsApp (export sales): +91 9689971271
+- Linguistics: +91 9371758355
+
+## Products
+
+- G4 Green Chilli
+- Fresh Onion
+- Cavendish Banana
+- Fresh Pomegranate
+- Frozen Vegetables
+- Dehydrated Vegetables
+- Fresh Turmeric
+- Semi Husk Coconut
+
+## How to buy
+
+1. Share product, quantity, specification and destination via /contact or WhatsApp.
+2. Shrim Export reviews sourcing availability and suitable product options.
+3. Quotation and commercial terms are confirmed in writing before shipment.
+
+## Optional
+
+- Custom packaging: bulk, retail, private label, custom
+- Markets: international buyers; packing and documentation aligned to destination country
