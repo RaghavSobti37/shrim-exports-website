@@ -1,8 +1,8 @@
 import { LEGAL_NAV } from './legal';
 
-/** Canonical production origin. Override with NEXT_PUBLIC_SITE_URL when a custom domain is live. */
+/** Canonical production origin. Apex redirects to www; GSC must see this host in sitemap loc URLs. */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://shrim-exports-website.vercel.app'
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.shrimexport.com'
 ).replace(/\/$/, '');
 
 export const SITE_NAME = 'Shrim Export';

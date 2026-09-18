@@ -4,13 +4,13 @@
 
 ## Site
 
-- Home: https://shrim-exports-website.vercel.app/
-- Export Products: https://shrim-exports-website.vercel.app/product-catalogue
-- About: https://shrim-exports-website.vercel.app/about
-- Request a Quote: https://shrim-exports-website.vercel.app/contact
-- Linguistics: https://shrim-exports-website.vercel.app/linguistics
-- Site Map: https://shrim-exports-website.vercel.app/site-map
-- XML Sitemap: https://shrim-exports-website.vercel.app/sitemap.xml
+- Home: https://www.shrimexport.com/
+- Export Products: https://www.shrimexport.com/product-catalogue
+- About: https://www.shrimexport.com/about
+- Request a Quote: https://www.shrimexport.com/contact
+- Linguistics: https://www.shrimexport.com/linguistics
+- Site Map: https://www.shrimexport.com/site-map
+- XML Sitemap: https://www.shrimexport.com/sitemap.xml
 
 ## Company
 

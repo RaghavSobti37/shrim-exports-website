@@ -19,4 +19,11 @@ assert.ok(robotsTs.includes('sitemap.xml'), 'robots must point to sitemap');
 assert.ok(llmsTxt.includes('Shrim Export'), 'llms.txt must describe the business');
 assert.ok(siteTs.includes('privacy-policy') || siteTs.includes('LEGAL_NAV'), 'legal routes wired');
 
+const canonical = 'https://www.shrimexport.com';
+assert.ok(siteTs.includes(canonical), 'SITE_URL default must be https://www.shrimexport.com');
+assert.equal(siteTs.includes('shrim-exports-website.vercel.app'), false, 'site.ts must not default to vercel.app');
+assert.equal(llmsTxt.includes('vercel.app'), false, 'llms.txt must use canonical domain, not vercel.app');
+assert.ok(llmsTxt.includes(`${canonical}/sitemap.xml`), 'llms.txt must list canonical sitemap URL');
+assert.ok(robotsTs.includes('new URL(SITE_URL).host'), 'robots Host must be hostname so GSC can fetch');
+
 console.log('SEO route inventory check passed');
