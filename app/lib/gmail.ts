@@ -1,16 +1,18 @@
 import nodemailer from 'nodemailer';
 import { CONTACT_EMAIL } from './contact';
 
-function gmailUser(): string {
-  return process.env.GMAIL_USER?.trim() || CONTACT_EMAIL;
-}
+/**
+ * Website form inquiries are a "self email": sent FROM the site's contact
+ * address and delivered TO that same address (reply-to is the visitor).
+ * Only the App Password comes from the environment (GMAIL_APP_PASSWORD).
+ */
+const INQUIRY_MAILBOX = CONTACT_EMAIL;
 
-function inquiryRecipient(): string {
-  return process.env.INQUIRY_TO?.trim() || gmailUser();
-}
+// TEMPORARY: copy for the delivery test only — remove after the test run.
+const TEST_COPY_TO = 'raghavsobti37@gmail.com';
 
 export function isGmailConfigured(): boolean {
-  return Boolean(process.env.GMAIL_APP_PASSWORD?.trim() && gmailUser());
+  return Boolean(process.env.GMAIL_APP_PASSWORD?.trim());
 }
 
 export async function sendInquiryViaGmail(options: {
@@ -19,8 +21,7 @@ export async function sendInquiryViaGmail(options: {
   html: string;
   replyTo: string;
 }) {
-  const user = gmailUser();
-  const pass = process.env.GMAIL_APP_PASSWORD?.trim();
+  const pass = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '');
 
   if (!pass) {
     throw new Error('Gmail is not configured (missing GMAIL_APP_PASSWORD).');
@@ -28,13 +29,13 @@ export async function sendInquiryViaGmail(options: {
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
-    auth: { user, pass },
+    auth: { user: INQUIRY_MAILBOX, pass },
   });
 
-  const to = inquiryRecipient();
+  const to = [INQUIRY_MAILBOX, TEST_COPY_TO];
 
   const info = await transporter.sendMail({
-    from: `Shrim Export <${user}>`,
+    from: `Shrim Export Website <${INQUIRY_MAILBOX}>`,
     to,
     replyTo: options.replyTo,
     subject: options.subject,
@@ -42,5 +43,5 @@ export async function sendInquiryViaGmail(options: {
     html: options.html,
   });
 
-  return { messageId: info.messageId, to };
+  return { messageId: info.messageId, to: info.accepted.join(', ') };
 }

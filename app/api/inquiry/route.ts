@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { CONTACT_EMAIL } from '@/app/lib/contact';
 import { isGmailConfigured, sendInquiryViaGmail } from '@/app/lib/gmail';
 import {
   EXPORT_SUBJECT,
@@ -19,7 +18,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          'Gmail is not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD in .env.local.',
+          'Gmail is not configured. Set GMAIL_APP_PASSWORD.',
       },
       { status: 503 }
     );
