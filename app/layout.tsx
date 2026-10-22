@@ -82,7 +82,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white">
+      <body className="min-h-full flex flex-col bg-background">
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <Navbar />
         <main className="flex-1 mt-20">

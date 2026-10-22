@@ -11,6 +11,7 @@ import {
   OFFICE_ADDRESS,
   PHONE_MILIND,
   PHONE_RAMESHWARI,
+  SOCIAL_LINKS,
 } from './contact';
 import { CATALOG_PRODUCTS } from './products';
 
@@ -121,7 +122,7 @@ export function organizationJsonLd() {
         availableLanguage: ['English', 'Hindi', 'Marathi'],
       },
     ],
-    sameAs: [],
+    sameAs: SOCIAL_LINKS.map((s) => s.href),
     description: SITE_DESCRIPTION,
   };
 }

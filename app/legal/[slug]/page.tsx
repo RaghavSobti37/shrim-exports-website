@@ -27,7 +27,7 @@ function Paragraphs({ text }: { text: string[] }) {
   return (
     <>
       {text.map((paragraph) => (
-        <p key={paragraph.slice(0, 48)} className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+        <p key={paragraph.slice(0, 48)} className="text-gray-600 text-base leading-relaxed whitespace-pre-line">
           {paragraph}
         </p>
       ))}
@@ -41,7 +41,7 @@ export default async function LegalPage({ params }: { params: Params }) {
   if (!page) notFound();
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: 'Home', path: '/' },
@@ -70,7 +70,7 @@ export default async function LegalPage({ params }: { params: Params }) {
               ) : null}
               <Paragraphs text={section.paragraphs} />
               {section.bullets && section.bullets.length > 0 && (
-                <ul className="list-disc pl-5 space-y-1 text-gray-600 text-sm leading-relaxed">
+                <ul className="list-disc pl-5 space-y-1 text-gray-600 text-base leading-relaxed">
                   {section.bullets.map((item) => (
                     <li key={item}>{item}</li>
                   ))}

@@ -14,3 +14,9 @@ export const WHATSAPP_EXPORT_TEXT =
 
 export const OFFICE_ADDRESS =
   'Flat No. 101, Kotkar Heights, Joshi Nagar, Kopargaon, Dist: Ahilyanagar, Maharashtra, India.';
+
+export const SOCIAL_LINKS = [
+  { name: 'Instagram', href: 'https://www.instagram.com/shrimexport' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/milinnd-jori-22b042118' },
+  { name: 'Facebook', href: 'https://www.facebook.com/share/19PWn4hcd3/' },
+] as const;

@@ -16,7 +16,7 @@ export default function SiteMapPage() {
   const legal = LEGAL_ROUTES;
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: 'Home', path: '/' },
@@ -26,7 +26,7 @@ export default function SiteMapPage() {
       <section className="bg-shrim-green text-white py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tight">Site Map</h1>
-          <p className="mt-4 text-gray-200 text-sm md:text-base leading-relaxed">
+          <p className="mt-4 text-gray-200 text-base md:text-lg leading-relaxed">
             All public pages on Shrim Export — for visitors, search engines and answer engines.
           </p>
         </div>
@@ -47,7 +47,7 @@ export default function SiteMapPage() {
                   >
                     {route.title}
                   </Link>
-                  <p className="text-sm text-gray-600 mt-1 leading-relaxed">{route.description}</p>
+                  <p className="text-base text-gray-600 mt-1 leading-relaxed">{route.description}</p>
                 </li>
               ))}
             </ul>

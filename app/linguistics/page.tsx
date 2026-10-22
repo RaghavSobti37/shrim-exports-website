@@ -79,7 +79,7 @@ export default function Linguistics() {
       </section>
 
       {/* Language Details */}
-      <section className="py-24 bg-gray-50 border-b border-gray-100">
+      <section className="py-24 bg-background-alt border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white p-8 md:p-12 shadow-sm border border-gray-100 rounded-2xl">
             
@@ -90,10 +90,10 @@ export default function Linguistics() {
               </span>
               <div className="relative z-10">
                 <h3 className="text-xl font-black text-shrim-green mb-6 uppercase tracking-wider">Hindi Language Tutoring</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed font-medium">
+                <p className="text-gray-600 text-base mb-4 leading-relaxed font-medium">
                   From basic conversational Hindi to reading, writing, and comprehension — our sessions are designed for NRI children and adults who want a real connection to the language, not just a school requirement checkbox.
                 </p>
-                <p className="text-gray-600 text-sm leading-relaxed font-medium">
+                <p className="text-gray-600 text-base leading-relaxed font-medium">
                   We teach the language as it's lived — with warmth, context, and cultural depth.
                 </p>
               </div>
@@ -106,10 +106,10 @@ export default function Linguistics() {
               </span>
               <div className="relative z-10">
                 <h3 className="text-xl font-black text-shrim-green mb-6 uppercase tracking-wider">Marathi Language Tutoring</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed font-medium">
+                <p className="text-gray-600 text-base mb-4 leading-relaxed font-medium">
                   Marathi is a rich, regional language that often gets overshadowed even within Indian communities abroad.
                 </p>
-                <p className="text-gray-600 text-sm leading-relaxed font-medium">
+                <p className="text-gray-600 text-base leading-relaxed font-medium">
                   We offer dedicated Marathi sessions for families from Maharashtra who want their children to carry this language forward — and be able to speak to their grandparents in their own tongue.
                 </p>
               </div>
@@ -125,7 +125,7 @@ export default function Linguistics() {
             <h3 className="text-2xl font-black text-gray-900 mb-4 uppercase tracking-wide">
               Ready to Keep the Language Alive in Your Home?
             </h3>
-            <p className="text-gray-600 text-sm font-medium leading-relaxed">
+            <p className="text-gray-600 text-base font-medium leading-relaxed">
               Whether it's for your children, yourself, or an elderly family member who wants to connect — we're here to help.
             </p>
           </div>
@@ -142,7 +142,7 @@ export default function Linguistics() {
               <div className="text-shrim-gold font-black text-2xl">1.</div>
               <div>
                 <h4 className="font-bold text-lg mb-2 uppercase tracking-wide">Reach Out</h4>
-                <p className="text-sm text-gray-300 leading-relaxed font-medium">Tell us which language you need, the learner's age and current level, and your timezone. We'll match you with the right session structure.</p>
+                <p className="text-base text-gray-300 leading-relaxed font-medium">Tell us which language you need, the learner's age and current level, and your timezone. We'll match you with the right session structure.</p>
               </div>
             </div>
             
@@ -150,7 +150,7 @@ export default function Linguistics() {
               <div className="text-shrim-gold font-black text-2xl">2.</div>
               <div>
                 <h4 className="font-bold text-lg mb-2 uppercase tracking-wide">Trial Session</h4>
-                <p className="text-sm text-gray-300 leading-relaxed font-medium">We start with a no-pressure introductory session to understand the learner's comfort level and set realistic goals for their journey.</p>
+                <p className="text-base text-gray-300 leading-relaxed font-medium">We start with a no-pressure introductory session to understand the learner's comfort level and set realistic goals for their journey.</p>
               </div>
             </div>
             
@@ -158,14 +158,14 @@ export default function Linguistics() {
               <div className="text-shrim-gold font-black text-2xl">3.</div>
               <div>
                 <h4 className="font-bold text-lg mb-2 uppercase tracking-wide">Ongoing Sessions</h4>
-                <p className="text-sm text-gray-300 leading-relaxed font-medium">Online sessions scheduled around your family's timezone and routine. Consistent, personal, and built to actually work.</p>
+                <p className="text-base text-gray-300 leading-relaxed font-medium">Online sessions scheduled around your family's timezone and routine. Consistent, personal, and built to actually work.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50 border-t border-gray-100">
+      <section className="py-24 bg-background-alt border-t border-gray-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 md:p-12 shadow-sm rounded-2xl border border-gray-100">
           <h2 className="text-3xl font-black text-shrim-green text-center mb-4 uppercase tracking-wider">
             Book a trial session

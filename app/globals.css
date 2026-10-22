@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f6f6f3;
+  --background-alt: #ecece7;
   --foreground: #171717;
   --shrim-green: #114133;
   --shrim-green-light: #165643;
@@ -13,6 +14,12 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  /* Slightly larger type scale for readability */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.25rem;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.5rem;
   --color-foreground: var(--foreground);
   --color-shrim-green: var(--shrim-green);
   --color-shrim-green-light: var(--shrim-green-light);
@@ -27,4 +34,8 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), sans-serif;
+}
+
+html {
+  background: var(--background);
 }

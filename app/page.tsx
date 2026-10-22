@@ -221,12 +221,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight uppercase max-w-3xl">
             From source to shipment.
           </h2>
-          <p className="mt-6 text-gray-600 max-w-3xl text-sm md:text-base leading-relaxed">
+          <p className="mt-6 text-gray-600 max-w-3xl text-base md:text-lg leading-relaxed">
             We bring together agricultural sourcing, product specifications, quality coordination, packaging
             and export preparation to help international buyers source from India with greater confidence.
           </p>
@@ -234,25 +234,25 @@ export default function Home() {
             {sourceCards.map((card) => (
               <div
                 key={card.title}
-                className="bg-gray-50 border border-gray-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
+                className="bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
               >
                 <h3 className="text-shrim-green font-black uppercase tracking-wider text-sm mb-3">
                   {card.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{card.desc}</p>
+                <p className="text-gray-600 text-base leading-relaxed">{card.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
+      <section className="py-24 bg-background-alt border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-shrim-gold font-black text-xs tracking-[0.25em] uppercase mb-3">Who we are</p>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight uppercase max-w-3xl">
             An India-based agricultural sourcing partner.
           </h2>
-          <div className="mt-8 max-w-3xl space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
+          <div className="mt-8 max-w-3xl space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
             <p>
               Shrim Export is an India-based agricultural sourcing company focused on connecting
               international buyers with agricultural products from India.
@@ -272,12 +272,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 tracking-tight uppercase text-center">
             Our products
           </h2>
-          <p className="mt-4 text-gray-600 max-w-3xl mx-auto text-center text-sm leading-relaxed">
+          <p className="mt-4 text-gray-600 max-w-3xl mx-auto text-center text-base leading-relaxed">
             We offer a growing range of fresh and processed agricultural products sourced from established
             production regions across India.
           </p>
@@ -310,7 +310,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-background-alt">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-shrim-gold font-black text-xs tracking-[0.25em] uppercase mb-3">Why Shrim</p>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight uppercase max-w-3xl">
@@ -323,7 +323,7 @@ export default function Home() {
               <div key={card.n} className="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
                 <p className="text-shrim-gold font-black text-sm tracking-widest mb-3">{card.n}</p>
                 <h3 className="font-black text-gray-900 uppercase tracking-wide text-sm mb-3">{card.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{card.desc}</p>
+                <p className="text-gray-600 text-base leading-relaxed">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -337,7 +337,7 @@ export default function Home() {
             <br />
             your product comes from.
           </h2>
-          <p className="mt-6 text-gray-200 max-w-3xl text-sm md:text-base leading-relaxed">
+          <p className="mt-6 text-gray-200 max-w-3xl text-base md:text-lg leading-relaxed">
             We believe buyers should have greater visibility into the journey of the products they source.
             Our sourcing approach is designed to maintain clear information around product origin, sourcing,
             specifications and shipment preparation.
@@ -362,7 +362,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-shrim-gold font-black text-xs tracking-[0.25em] uppercase mb-3">
             Quality control
@@ -372,13 +372,13 @@ export default function Home() {
             <br />
             not a promise.
           </h2>
-          <p className="mt-6 text-gray-600 max-w-3xl text-sm md:text-base leading-relaxed">
+          <p className="mt-6 text-gray-600 max-w-3xl text-base md:text-lg leading-relaxed">
             Agricultural products can vary by season, origin and harvest. Our approach is to establish clear
             specifications before supply and coordinate quality checks throughout the preparation process.
           </p>
           <div className="mt-12 space-y-4 max-w-4xl">
             {qualityItems.map((item) => (
-              <div key={item.title} className="border-l-4 border-shrim-gold bg-gray-50 px-6 py-5 rounded-r-xl">
+              <div key={item.title} className="border-l-4 border-shrim-gold bg-white px-6 py-5 rounded-r-xl">
                 <h3 className="font-black text-gray-900 uppercase tracking-wide text-sm">{item.title}</h3>
                 <p className="text-gray-600 text-sm mt-1">{item.desc}</p>
               </div>
@@ -387,7 +387,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-background-alt">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-shrim-gold font-black text-xs tracking-[0.25em] uppercase mb-3">How we work</p>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight uppercase max-w-3xl">
@@ -401,7 +401,7 @@ export default function Home() {
                   <h3 className="font-black text-gray-900 uppercase tracking-wide text-sm mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
+                  <p className="text-gray-600 text-base leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -412,13 +412,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-shrim-gold font-black text-xs tracking-[0.25em] uppercase mb-3">Packaging</p>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight uppercase max-w-3xl">
             Your requirement. Your packaging.
           </h2>
-          <p className="mt-6 text-gray-600 max-w-3xl text-sm md:text-base leading-relaxed">
+          <p className="mt-6 text-gray-600 max-w-3xl text-base md:text-lg leading-relaxed">
             Different markets and buyers require different approaches to packaging. We work with buyers to
             determine suitable packaging based on product, quantity, handling and destination requirements.
           </p>
@@ -442,12 +442,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-background-alt">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-4 uppercase text-center">
             Markets we <span className="text-shrim-gold">serve</span>
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto mb-16 text-sm leading-relaxed text-center">
+          <p className="text-gray-600 max-w-3xl mx-auto mb-16 text-base leading-relaxed text-center">
             We work with international buyers across destination markets. Requirements, documentation and
             packing are discussed against the country you are shipping to — not assumed in advance.
           </p>
@@ -466,14 +466,14 @@ export default function Home() {
                     <h3 className="text-3xl font-black text-white tracking-widest uppercase">{market.name}</h3>
                   </div>
                 </div>
-                <p className="text-gray-700 text-sm leading-relaxed px-2">{market.desc}</p>
+                <p className="text-gray-700 text-base leading-relaxed px-2">{market.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-white" aria-labelledby="faq-heading">
+      <section className="py-24 bg-background" aria-labelledby="faq-heading">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             id="faq-heading"
@@ -481,7 +481,7 @@ export default function Home() {
           >
             Common questions
           </h2>
-          <p className="text-gray-600 text-sm leading-relaxed text-center mb-12">
+          <p className="text-gray-600 text-base leading-relaxed text-center mb-12">
             Direct answers for buyers evaluating Shrim Export as an Indian agricultural sourcing partner.
           </p>
           <dl className="space-y-8">
@@ -490,7 +490,7 @@ export default function Home() {
                 <dt className="text-shrim-green font-black text-sm uppercase tracking-wider">
                   {faq.question}
                 </dt>
-                <dd className="mt-2 text-gray-600 text-sm md:text-base leading-relaxed">{faq.answer}</dd>
+                <dd className="mt-2 text-gray-600 text-base md:text-lg leading-relaxed">{faq.answer}</dd>
               </div>
             ))}
           </dl>
@@ -502,7 +502,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-black tracking-tight uppercase">
             Looking for an Indian sourcing partner?
           </h2>
-          <p className="mt-6 text-gray-200 text-sm md:text-base leading-relaxed">
+          <p className="mt-6 text-gray-200 text-base md:text-lg leading-relaxed">
             Tell us what you&apos;re looking for — product, quantity, specification and destination — and
             let&apos;s explore how we can source it.
           </p>

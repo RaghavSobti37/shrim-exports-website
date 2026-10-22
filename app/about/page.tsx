@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import WhatsAppLink from '../components/WhatsAppLink';
+import SocialLinks from '../components/SocialLinks';
 import JsonLd from '../components/JsonLd';
 import ExportsTabRedirect from './ExportsTabRedirect';
 import { CONTACT_EMAIL, PHONE_MILIND, PHONE_RAMESHWARI } from '../lib/contact';
@@ -23,7 +24,7 @@ const beliefs = [
 
 export default function About() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-background">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: 'Home', path: '/' },
@@ -52,7 +53,7 @@ export default function About() {
           <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight mb-8">
             Rooted in India. Built to connect.
           </h2>
-          <div className="space-y-5 text-gray-600 text-sm md:text-base leading-relaxed">
+          <div className="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed">
             <p>
               Shrim Export began with a simple belief: India&apos;s agricultural strength deserves to be
               connected with the world through better sourcing, clearer communication and stronger
@@ -88,7 +89,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
+      <section className="py-24 bg-background-alt border-y border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight mb-10">
             What we believe
@@ -113,7 +114,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-background-alt">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 text-center mb-16 uppercase tracking-wider">
             Meet the founders
@@ -134,13 +135,13 @@ export default function About() {
               <p className="text-xs font-bold text-shrim-green mb-4 tracking-widest uppercase">
                 Co-Founder, Shrim Export
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed text-center mb-6 font-medium">
+              <p className="text-gray-600 text-base leading-relaxed text-center mb-6 font-medium">
                 Milind Madhukar Jori is the Co-Founder of Shrim Export. With extensive experience in
                 agricultural trade, business development, and supply chain management, he leads the export
                 division&apos;s operations, ensuring that the highest standards of quality and traceability
                 are maintained across all shipments.
               </p>
-              <div className="text-xs text-gray-400 font-normal space-y-1 text-center border-t border-gray-200/50 pt-4 w-full">
+              <div className="text-sm text-gray-500 font-normal space-y-1 text-center border-t border-gray-200/50 pt-4 w-full">
                 <p>
                   Phone:{' '}
                   <WhatsAppLink phone={PHONE_MILIND} className="hover:text-shrim-green transition-colors">
@@ -171,13 +172,13 @@ export default function About() {
               <p className="text-xs font-bold text-shrim-green mb-4 tracking-widest uppercase">
                 Proprietor & Founder, Shrim Linguistics | Co-Founder, Shrim Export
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed text-center mb-6 font-medium">
+              <p className="text-gray-600 text-base leading-relaxed text-center mb-6 font-medium">
                 Rameshwari Milind Jori is the Proprietor and Founder of Shrim Linguistics and Co-Founder of
                 Shrim Export. Combining a deep passion for language education with corporate excellence, she
                 designs the tutoring programs and oversees customer relationship management, connecting
                 learners globally to their linguistic heritage.
               </p>
-              <div className="text-xs text-gray-400 font-normal space-y-1 text-center border-t border-gray-200/50 pt-4 w-full">
+              <div className="text-sm text-gray-500 font-normal space-y-1 text-center border-t border-gray-200/50 pt-4 w-full">
                 <p>
                   Phone:{' '}
                   <WhatsAppLink phone={PHONE_RAMESHWARI} className="hover:text-shrim-green transition-colors">
@@ -194,7 +195,12 @@ export default function About() {
             </div>
           </div>
 
-          <div className="mt-16 text-center">
+          <div className="mt-16 flex flex-col items-center gap-4">
+            <p className="text-shrim-gold font-black text-xs tracking-[0.25em] uppercase">Follow Shrim Export</p>
+            <SocialLinks variant="light" />
+          </div>
+
+          <div className="mt-12 text-center">
             <Link
               href="/contact"
               className="inline-flex px-8 py-3.5 bg-shrim-gold hover:bg-shrim-gold-light text-white font-bold rounded shadow-lg transition-colors text-sm uppercase tracking-wider"

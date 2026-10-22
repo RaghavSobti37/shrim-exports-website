@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { CATALOG_PRODUCTS } from '../lib/products';
 import { breadcrumbJsonLd, pageMetadata, productCatalogJsonLd } from '../lib/seo';
 import JsonLd from '../components/JsonLd';
+import ProductCatalogGrid from '../components/ProductCatalogGrid';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Export Products',
@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function ProductCatalogue() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-background">
       <JsonLd
         data={[
           breadcrumbJsonLd([
@@ -28,8 +28,8 @@ export default function ProductCatalogue() {
         <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4 uppercase">
           Our products
         </h1>
-        <p className="text-gray-600 max-w-3xl mb-8 text-sm md:text-base leading-relaxed">
-          Explore our range of fresh and processed agricultural products sourced from India.
+        <p className="text-gray-600 max-w-3xl mb-8 text-base md:text-lg leading-relaxed">
+          Explore our range of fresh and processed agricultural products sourced from India. Tap any product for full specifications, packaging and storage details.
         </p>
 
         <div className="flex items-center gap-4 flex-wrap mb-16 border-b border-gray-100 pb-6">
@@ -44,46 +44,7 @@ export default function ProductCatalogue() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-          {CATALOG_PRODUCTS.map((product) => (
-            <div key={product.id} className="flex flex-col justify-between h-full bg-white p-2">
-              <div>
-                <h3 className="text-shrim-green font-black text-lg mb-4 uppercase tracking-wider">
-                  {product.title}
-                </h3>
-                <div className="text-xs text-gray-500 mb-6 space-y-1.5 font-sans uppercase tracking-wider font-semibold">
-                  {product.description.map((desc, idx) => {
-                    const colonIndex = desc.indexOf(':');
-                    if (colonIndex !== -1) {
-                      const boldPart = desc.slice(0, colonIndex);
-                      const rest = desc.slice(colonIndex + 1);
-                      return (
-                        <p key={idx} className="text-xs">
-                          <span className="text-gray-900 font-bold">{boldPart}:</span>
-                          <span className="text-gray-500"> {rest}</span>
-                        </p>
-                      );
-                    }
-                    return (
-                      <p key={idx} className="text-xs text-gray-500">
-                        {desc}
-                      </p>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
-                <Image src={product.image} alt={product.title} fill className="object-cover" />
-              </div>
-              <Link
-                href={`/contact?product=${encodeURIComponent(product.title)}`}
-                className="mt-4 inline-flex justify-center px-4 py-2.5 bg-shrim-green hover:bg-shrim-green-light text-white font-bold rounded text-xs uppercase tracking-wider"
-              >
-                Request this product
-              </Link>
-            </div>
-          ))}
-        </div>
+        <ProductCatalogGrid products={CATALOG_PRODUCTS} />
       </section>
 
       <section className="bg-shrim-green text-white py-20">
@@ -91,7 +52,7 @@ export default function ProductCatalogue() {
           <h2 className="text-3xl font-black uppercase tracking-tight">
             Don&apos;t see what you&apos;re looking for?
           </h2>
-          <p className="mt-4 text-gray-200 text-sm leading-relaxed">
+          <p className="mt-4 text-gray-200 text-base leading-relaxed">
             Tell us your requirement. We may be able to source additional products based on quantity, season
             and destination.
           </p>

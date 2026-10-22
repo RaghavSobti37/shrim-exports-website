@@ -47,16 +47,17 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <nav className="fixed top-0 w-full bg-white shadow-sm border-b border-gray-100 z-50 relative">
+    <nav className="fixed top-0 w-full bg-background shadow-sm border-b border-gray-100 z-50 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center gap-2">
+              {/* Symbol + wordmark lockup. Swap the src for the final wordmark file when supplied. */}
               <Image
-                src="/images/shrim-logo-icon.png"
-                alt="Shrim Export Logo"
-                width={56}
-                height={56}
+                src="/images/Asset 6@5x-8.png"
+                alt="Shrim Export"
+                width={675}
+                height={408}
                 className="h-14 w-auto"
                 priority
               />
@@ -106,7 +107,7 @@ export default function Navbar() {
           />
           <div
             id="mobile-nav-menu"
-            className="md:hidden absolute left-0 right-0 top-full bg-white border-b border-gray-100 shadow-lg z-50"
+            className="md:hidden absolute left-0 right-0 top-full bg-background border-b border-gray-100 shadow-lg z-50"
           >
             <div className="py-2">
               {navLinks.map((link) => (
