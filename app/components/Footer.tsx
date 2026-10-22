@@ -46,6 +46,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
+            <SocialLinks variant="dark" className="mt-8" />
           </div>
 
           <div>
@@ -81,8 +82,6 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <h3 className="text-sm font-black tracking-wider mt-8 mb-4 text-white uppercase">Follow us</h3>
-            <SocialLinks variant="dark" />
           </div>
 
           <div className="lg:col-span-2">

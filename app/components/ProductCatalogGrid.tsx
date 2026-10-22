@@ -97,8 +97,9 @@ export default function ProductCatalogGrid({ products }: { products: CatalogProd
         {products.map((product) => {
           const hasDetail = Boolean(PRODUCT_DETAILS[product.id]);
           return (
-            <div key={product.id} className="flex flex-col justify-between h-full p-2">
-              <div>
+            <div key={product.id} className="flex flex-col h-full p-2">
+              {/* Spec block grows so every image + button row lines up across the grid */}
+              <div className="flex-1">
                 <h3 className="text-shrim-green font-black text-lg mb-4 uppercase tracking-wider">
                   {product.title}
                 </h3>
@@ -128,14 +129,14 @@ export default function ProductCatalogGrid({ products }: { products: CatalogProd
                   <button
                     type="button"
                     onClick={() => setActiveId(product.id)}
-                    className="inline-flex justify-center px-4 py-2.5 border-2 border-shrim-green text-shrim-green hover:bg-shrim-green hover:text-white font-bold rounded text-xs uppercase tracking-wider transition-colors"
+                    className="inline-flex items-center justify-center text-center min-h-12 px-3 py-2 border-2 border-shrim-green text-shrim-green hover:bg-shrim-green hover:text-white font-bold rounded text-xs leading-tight uppercase tracking-wider transition-colors"
                   >
                     View details
                   </button>
                 )}
                 <Link
                   href={`/contact?product=${encodeURIComponent(product.title)}`}
-                  className={`inline-flex justify-center items-center px-4 py-2.5 bg-shrim-green hover:bg-shrim-green-light text-white font-bold rounded text-xs uppercase tracking-wider ${
+                  className={`inline-flex items-center justify-center text-center min-h-12 px-3 py-2 border-2 border-shrim-green bg-shrim-green hover:bg-shrim-green-light hover:border-shrim-green-light text-white font-bold rounded text-xs leading-tight uppercase tracking-wider transition-colors ${
                     hasDetail ? '' : 'col-span-2'
                   }`}
                 >
