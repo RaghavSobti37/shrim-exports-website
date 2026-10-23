@@ -1,15 +1,15 @@
 import nodemailer from 'nodemailer';
-import { CONTACT_EMAIL } from './contact';
+import { FORM_INBOX_EMAIL } from './contact';
 
 /**
- * Website form inquiries are a "self email": sent FROM the site's contact
- * address and delivered TO that same address (reply-to is the visitor).
+ * Website form inquiries are a "self email": sent FROM the form inbox and
+ * delivered TO that same inbox (reply-to is the visitor).
  * Only the App Password comes from the environment (GMAIL_APP_PASSWORD).
  */
-const INQUIRY_MAILBOX = CONTACT_EMAIL;
+const INQUIRY_MAILBOX = FORM_INBOX_EMAIL;
 
-// TEMPORARY: copy for the delivery test only — remove after the test run.
-const TEST_COPY_TO = 'raghavsobti37@gmail.com';
+// TEMPORARY: previous inbox, copied for the delivery test only — remove after the test run.
+const TEST_COPY_TO = 'rameshwarijori@shrimexport.com';
 
 export function isGmailConfigured(): boolean {
   return Boolean(process.env.GMAIL_APP_PASSWORD?.trim());

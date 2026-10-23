@@ -1,5 +1,8 @@
 export const CONTACT_EMAIL = 'rameshwarijori@shrimexport.com';
 
+/** Gmail account that sends AND receives website form inquiries (self email). */
+export const FORM_INBOX_EMAIL = 'mjori81@gmail.com';
+
 export const PHONE_MILIND = '+91 9689971271';
 export const PHONE_RAMESHWARI = '+91 9371758355';
 
