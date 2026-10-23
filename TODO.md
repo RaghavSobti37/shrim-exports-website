@@ -4,7 +4,7 @@ Items deferred from review (`renewwebsiteprojectwork/`) and follow-up decisions.
 
 ## Forms & email
 
-- [ ] **Gmail App Password** — Add `GMAIL_APP_PASSWORD` to `.env.local` (and Vercel env) for `rameshwarijori@shrimexport.com`. Create at [Google App Passwords](https://myaccount.google.com/apppasswords) (2-Step Verification required). Until set, forms return “Gmail is not configured.”
+- [ ] **Gmail App Password** — Add `GMAIL_APP_PASSWORD` to `.env.local` (and Vercel env) for `rameshwarijori1985@gmail.com` (form sender + inbox). Create at [Google App Passwords](https://myaccount.google.com/apppasswords) (2-Step Verification required). Until set, forms return “Gmail is not configured.”
 - [x] **Server-side form email** — `/api/inquiry` via Gmail SMTP (`GMAIL_USER` + `GMAIL_APP_PASSWORD`).
 - [x] **`/quote` form** — Same API flow as About exports form.
 
