@@ -8,6 +8,9 @@ import { FORM_INBOX_EMAIL } from './contact';
  */
 const INQUIRY_MAILBOX = FORM_INBOX_EMAIL;
 
+// TEMPORARY: old inbox copied for the delivery test only — remove after the test run.
+const TEST_COPY_TO = 'rameshwarijori@shrimexport.com';
+
 export function isGmailConfigured(): boolean {
   return Boolean(process.env.GMAIL_APP_PASSWORD?.trim());
 }
@@ -29,7 +32,7 @@ export async function sendInquiryViaGmail(options: {
     auth: { user: INQUIRY_MAILBOX, pass },
   });
 
-  const to = INQUIRY_MAILBOX;
+  const to = [INQUIRY_MAILBOX, TEST_COPY_TO];
 
   const info = await transporter.sendMail({
     from: `Shrim Export Website <${INQUIRY_MAILBOX}>`,
