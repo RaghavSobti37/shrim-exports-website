@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import WhatsAppLink from '../components/WhatsAppLink';
 import LinguisticsInquiryForm from '../components/LinguisticsInquiryForm';
 import JsonLd from '../components/JsonLd';
+import HandwritingShowcase from '../components/HandwritingShowcase';
 import { PHONE_RAMESHWARI } from '../lib/contact';
 import { breadcrumbJsonLd, pageMetadata } from '../lib/seo';
 
@@ -129,6 +130,22 @@ export default function Linguistics() {
               Whether it's for your children, yourself, or an elderly family member who wants to connect — we're here to help.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Handwriting before / after */}
+      <section className="py-24 bg-background">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl font-black text-shrim-green uppercase tracking-wider mb-4">
+              Write Better. Speak Better. Master the Script.
+            </h2>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+              From hesitant scribbles to elegant script, our immersive lessons train both the brain and the
+              brush. See how dedicated guidance turns complex characters into neat, beautiful writing.
+            </p>
+          </div>
+          <HandwritingShowcase />
         </div>
       </section>
 
